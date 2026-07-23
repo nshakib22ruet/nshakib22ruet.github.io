@@ -35,5 +35,4 @@ An ESP32-based IoT weather and flood monitoring system that measures temperature
 
 ## GitHub Repository
 
-**Source Code:**  
-https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System
+**Source Code:** [Project-1-ESP32-Weather-Flood-Monitoring-System](https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System)
