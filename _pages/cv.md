@@ -1,64 +1,148 @@
 ---
-layout: archive
-title: "CV"
 permalink: /cv/
+title: "Curriculum Vitae"
 author_profile: true
-redirect_from:
-  - /resume
 ---
 
-{% include base_path %}
+# Curriculum Vitae
 
-Education
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+📄 **Download PDF Version:** *(Upload your CV as `CV.pdf` in the `files` folder and uncomment the line below.)*
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+<!-- [📥 Download CV](/files/CV.pdf) -->
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+---
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+## Personal Information
 
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+| | |
+|---|---|
+| **Full Name** | Md. Najmus Shakib |
+| **Date of Birth** | 02 August 2004 |
+| **Nationality** | Bangladeshi |
+| **Email** | nshakib22ruet@gmail.com |
+| **Phone** | +880 1770-222637 |
+| **GitHub** | [github.com/nshakib22ruet](https://github.com/nshakib22ruet) |
+| **LinkedIn** | [linkedin.com/in/md-najmus-shakib-4064102bb](https://www.linkedin.com/in/md-najmus-shakib-4064102bb/) |
+
+---
+
+## Career Objective
+
+Motivated undergraduate Electrical and Electronic Engineering student with a strong interest in Embedded Systems, Internet of Things (IoT), Machine Learning, and Signal Processing. Passionate about designing intelligent engineering solutions through hardware and software integration. Seeking opportunities to contribute to research, innovation, and real-world engineering projects while continuously expanding my technical expertise.
+
+---
+
+## Education
+
+### Rajshahi University of Engineering & Technology (RUET)
+
+**Bachelor of Science in Engineering (B.Sc. Eng.)**
+
+**Department:** Electrical & Electronic Engineering (EEE)
+
+- Session: 2022–2023
+- Current Year: 3rd Year
+- Expected Graduation: December 2027
+
+### Higher Secondary Certificate (HSC)
+
+**Rangpur Government College**
+
+- Group: Science
+- Passing Year: 2022
+- Result: GPA 5.00
+
+### Secondary School Certificate (SSC)
+
+**Bir Uttam Shaheed Samad School & College**
+
+- Group: Science
+- Passing Year: 2020
+- Result: GPA 5.00
+
+---
+
+## Technical Skills
+
+### Programming Languages
+
+- C
+- C++
+- Python
+- MATLAB
+
+### Embedded Systems
+
+- ESP32
+- Arduino
+- Bluetooth Low Energy (BLE)
+
+### Software & Tools
+
+- Arduino IDE
+- Proteus
+- MATLAB
+- Git
+- GitHub
+- Visual Studio Code
+
+### Machine Learning
+
+- Quadratic Regression
+- Data Analysis
+- NumPy
+- Pandas
+- Matplotlib
+
+---
+
+## Academic Project
+
+### ESP32 IoT Weather & Flood Monitoring System
+
+Developed an ESP32-based IoT system for real-time monitoring of temperature, humidity, rainfall, and water level. The project integrates Bluetooth Low Energy (BLE), an SH1106 OLED display, and a Quadratic Regression Machine Learning model for environmental prediction and flood-risk monitoring.
+
+**GitHub Repository:**
+
+[Project-1-ESP32-Weather-Flood-Monitoring-System](https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System)
+
+---
+
+## Research Interests
+
+- Embedded Systems
+- Internet of Things (IoT)
+- Machine Learning
+- Signal Processing
+- Communication Systems
+- Biomedical Engineering
+
+---
+
+## Languages
+
+| Language | Proficiency |
+|----------|-------------|
+| Bengali | Native |
+| English | Professional Working Proficiency |
+
+---
+
+## Addresses
+
+### Present Address
+
+Kazla, Rajshahi-6204, Bangladesh
+
+### Permanent Address
+
+Village: Parbotipur  
+Post Office: Uposhohor  
+Upazila: Rangpur Sadar  
+District: Rangpur-5401, Bangladesh
+
+---
+
+## References
+
+Available upon request.
