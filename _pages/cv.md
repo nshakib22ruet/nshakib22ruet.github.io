@@ -4,18 +4,14 @@ title: "Curriculum Vitae"
 author_profile: true
 ---
 
-# Curriculum Vitae
-
-📄 **Download PDF Version:** *(Upload your CV as `CV.pdf` in the `files` folder and uncomment the line below.)*
-
-<!-- [📥 Download CV](/files/CV.pdf) -->
+📄 **Download PDF Version** *(Coming Soon)*
 
 ---
 
 ## Personal Information
 
-| | |
-|---|---|
+| **Information** | **Details** |
+|:---------------|:------------|
 | **Full Name** | Md. Najmus Shakib |
 | **Date of Birth** | 02 August 2004 |
 | **Nationality** | Bangladeshi |
@@ -28,37 +24,36 @@ author_profile: true
 
 ## Career Objective
 
-Motivated undergraduate Electrical and Electronic Engineering student with a strong interest in Embedded Systems, Internet of Things (IoT), Machine Learning, and Signal Processing. Passionate about designing intelligent engineering solutions through hardware and software integration. Seeking opportunities to contribute to research, innovation, and real-world engineering projects while continuously expanding my technical expertise.
+Motivated undergraduate Electrical and Electronic Engineering student with a strong interest in Embedded Systems, Internet of Things (IoT), Machine Learning, and Signal Processing. Passionate about developing intelligent engineering solutions through hardware and software integration. Seeking opportunities to contribute to research, innovation, and real-world engineering projects while continuously enhancing my technical expertise.
 
 ---
 
 ## Education
 
-### Rajshahi University of Engineering & Technology (RUET)
+### Bachelor of Science in Engineering (B.Sc. Eng.)
 
-**Bachelor of Science in Engineering (B.Sc. Eng.)**
+**Department:** Electrical & Electronic Engineering (EEE)  
+**University:** Rajshahi University of Engineering & Technology (RUET)
 
-**Department:** Electrical & Electronic Engineering (EEE)
-
-- Session: 2022–2023
-- Current Year: 3rd Year
-- Expected Graduation: December 2027
+- **Session:** 2022–2023
+- **Current Year:** 3rd Year
+- **Expected Graduation:** December 2027
 
 ### Higher Secondary Certificate (HSC)
 
-**Rangpur Government College**
+**Institution:** Rangpur Government College
 
-- Group: Science
-- Passing Year: 2022
-- Result: GPA 5.00
+- **Group:** Science
+- **Passing Year:** 2022
+- **Result:** GPA 5.00
 
 ### Secondary School Certificate (SSC)
 
-**Bir Uttam Shaheed Samad School & College**
+**Institution:** Bir Uttam Shaheed Samad School & College
 
-- Group: Science
-- Passing Year: 2020
-- Result: GPA 5.00
+- **Group:** Science
+- **Passing Year:** 2020
+- **Result:** GPA 5.00
 
 ---
 
@@ -100,10 +95,9 @@ Motivated undergraduate Electrical and Electronic Engineering student with a str
 
 ### ESP32 IoT Weather & Flood Monitoring System
 
-Developed an ESP32-based IoT system for real-time monitoring of temperature, humidity, rainfall, and water level. The project integrates Bluetooth Low Energy (BLE), an SH1106 OLED display, and a Quadratic Regression Machine Learning model for environmental prediction and flood-risk monitoring.
+Developed an ESP32-based IoT system for real-time monitoring of temperature, humidity, rainfall, and water level. The project integrates Bluetooth Low Energy (BLE), an SH1106 OLED display, and a Quadratic Regression machine learning model for environmental prediction and flood-risk monitoring.
 
-**GitHub Repository:**
-
+**GitHub Repository:**  
 [Project-1-ESP32-Weather-Flood-Monitoring-System](https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System)
 
 ---
@@ -121,14 +115,14 @@ Developed an ESP32-based IoT system for real-time monitoring of temperature, hum
 
 ## Languages
 
-| Language | Proficiency |
-|----------|-------------|
+| **Language** | **Proficiency** |
+|:------------|:----------------|
 | Bengali | Native |
 | English | Professional Working Proficiency |
 
 ---
 
-## Addresses
+## Address
 
 ### Present Address
 
@@ -145,4 +139,4 @@ District: Rangpur-5401, Bangladesh
 
 ## References
 
-Available upon request.
+**Available upon request.**
