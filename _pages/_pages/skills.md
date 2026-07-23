@@ -6,35 +6,67 @@ author_profile: true
 
 # Technical Skills
 
-## Programming Languages
+Welcome to my technical skills page. I am continuously expanding my knowledge in embedded systems, IoT, machine learning, and software development through academic projects and self-learning.
+---
+
+## 💻 Programming Languages
+
 - C
 - C++
 - Python
 - MATLAB
+---
 
-## Embedded Systems
+## 🔌 Embedded Systems & IoT
+
 - ESP32
 - Arduino
-## Machine Learning & AI
-- Machine Learning
+- Bluetooth Low Energy (BLE)
+- Sensor Interfacing
+---
+
+## 🤖 Machine Learning & Data Analysis
+
+- Machine Learning Fundamentals
 - Quadratic Regression
 - Data Analysis
+- NumPy
+- Pandas
+- Matplotlib
+---
 
-## Software & Tools
+## 🛠 Software & Development Tools
+
 - Arduino IDE
+- Visual Studio Code
+- Git
 - GitHub
 - Proteus
 - MATLAB
-- VS Code
+- Wokwi Simulator
 
-## Hardware
-- DHT11 Sensor
+---
+
+## ⚡ Hardware Experience
+
+- ESP32 Development Board
+- Arduino Uno
+- DHT11 Temperature & Humidity Sensor
 - HC-SR04 Ultrasonic Sensor
 - SH1106 OLED Display
-- Rain Sensor
-- Bluetooth Low Energy (BLE)
+- Rain Sensor Module
+- L298N Motor Driver
 
-## Areas of Interest
-- Embedded Systems
-- Internet of Things (IoT)
-- Machine Learning
+---
+
+## 🌍 Languages
+
+| Language | Proficiency |
+|----------|-------------|
+| Bengali | Native |
+| English | Good (Reading, Writing & Technical Communication) |
+
+---
+- PCB Design
+- Embedded Linux
+- Computer Vision
