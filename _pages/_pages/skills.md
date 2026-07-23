@@ -7,7 +7,6 @@ author_profile: true
 # Technical Skills
 Welcome to my technical skills page. I am continuously expanding my knowledge in embedded systems, IoT, machine learning, and software development through academic projects and self-learning.
 ---
-
 ## 💻 Programming Languages
 - C
 - C++
@@ -19,6 +18,7 @@ Welcome to my technical skills page. I am continuously expanding my knowledge in
 - Arduino
 - Bluetooth Low Energy (BLE)
 - Sensor Interfacing
+- Embedded C
 ---
 ## 🤖 Machine Learning & Data Analysis
 - Machine Learning Fundamentals
@@ -46,10 +46,14 @@ Welcome to my technical skills page. I am continuously expanding my knowledge in
 - Rain Sensor Module
 - L298N Motor Driver
 ---
+## 🖥️ Design & Simulation
+- PCB Design
+- Circuit Simulation
+- Proteus Design Suite
+- Tinkercad
+---
 ## 🌍 Languages
 | Language | Proficiency |
 |----------|-------------|
-| Bengali | Native |
-| English | Good (Reading, Writing & Technical Communication) |
----
-- PCB Design
+| Bengali  | Native |
+| English  | Good (Reading, Writing & Technical Communication) |
