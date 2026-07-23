@@ -23,7 +23,7 @@ repository               : "nshakib22ruet/nshakib22ruet.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "WhatsApp Image 2026-07-23 at 14.20.59.jpeg"
+  avatar           : "profile.jpg"
   name             : "Md. Najmus Shakib"
   pronouns         : "he/him"
   bio              :  "Undergraduate EEE Student at RUET | Embedded Systems | IoT | ML"
