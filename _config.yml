@@ -22,15 +22,14 @@ repository               : "nshakib22ruet/nshakib22ruet.github.io"
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
-  # Biographic information
   avatar           : "profile.jpg"
   name             : "Md. Najmus Shakib"
   pronouns         : "he/him"
-  bio              :  "Undergraduate EEE Student at RUET | Embedded Systems | IoT | ML"
+  bio              : "Undergraduate EEE Student at RUET | Embedded Systems | IoT | ML"
   location         : "Rajshahi, Bangladesh"
   employer         : "Rajshahi University of Engineering & Technology (RUET)"
-  uri              : # URL
-  email            : "nshakib22ruet@gmail.com" 
+  uri              : "https://nshakib22ruet.github.io"
+  email            : "nshakib22ruet@gmail.com"
 
   # Academic websites
   academia         : # URL
