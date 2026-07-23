@@ -4,8 +4,8 @@
 /*
  * This file controls what is imported from /_sass
  *
- * Note that the files are processed in the order they are imported, so they are partly
-   sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
+ * Note that the files are processed in the order they are imported.
+ * The first two lines are required by Jekyll.
  */
 
 @import
@@ -35,5 +35,186 @@
     "layout/page",
     "layout/archive",
     "layout/sidebar",
-    "layout/json_cv"
-;
+    "layout/json_cv";
+
+
+/* ==========================
+   Modern Portfolio Design
+   ========================== */
+
+
+/* Google Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+
+
+/* Global Font */
+
+body {
+
+    font-family: 'Inter', sans-serif;
+
+}
+
+
+
+/* Profile Image */
+
+.author__avatar img {
+
+    border-radius:50%;
+
+    border:4px solid white;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+
+.author__avatar img:hover {
+
+    transform:scale(1.05);
+
+}
+
+
+
+/* Links */
+
+a {
+
+    color:#2563eb;
+
+    transition:.3s;
+
+}
+
+
+a:hover {
+
+    color:#0f172a;
+
+}
+
+
+
+/* Project Cards */
+
+.archive__item {
+
+    border-radius:18px;
+
+    padding:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+
+.archive__item:hover {
+
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.15);
+
+}
+
+
+
+/* Skill Badges */
+
+.badge {
+
+    display:inline-block;
+
+    background:
+    linear-gradient(135deg,#2563eb,#06b6d4);
+
+    color:white;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    margin:5px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+.badge:hover {
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/* Headings */
+
+h1,h2,h3,h4 {
+
+    font-weight:700;
+
+}
+
+
+
+/* Better spacing */
+
+h2 {
+
+    margin-top:50px;
+
+}
+
+
+
+/* Smooth scrolling */
+
+html {
+
+    scroll-behavior:smooth;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    h1{
+
+        font-size:32px;
+
+    }
+
+
+    h2{
+
+        font-size:26px;
+
+    }
+
+
+    .archive__item{
+
+        padding:15px;
+
+    }
+
+}
