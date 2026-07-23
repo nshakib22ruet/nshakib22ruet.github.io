@@ -4,8 +4,6 @@ title: "Contact"
 author_profile: true
 ---
 
-# Contact
-
 Thank you for visiting my portfolio. I am always interested in discussing research opportunities, engineering projects, internships, and collaborations.
 
 ## 📧 Email
