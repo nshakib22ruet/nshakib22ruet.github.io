@@ -3,23 +3,19 @@ permalink: /skills/
 title: "Skills"
 author_profile: true
 ---
-
 # Technical Skills
 Welcome to my technical skills page. I am continuously expanding my knowledge in embedded systems, IoT, machine learning, and software development through academic projects and self-learning.
----
 ## 💻 Programming Languages
 - C
 - C++
 - Python
 - MATLAB
----
 ## 🔌 Embedded Systems & IoT
 - ESP32
 - Arduino
 - Bluetooth Low Energy (BLE)
 - Sensor Interfacing
 - Embedded C
----
 ## 🤖 Machine Learning & Data Analysis
 - Machine Learning Fundamentals
 - Quadratic Regression
@@ -27,16 +23,14 @@ Welcome to my technical skills page. I am continuously expanding my knowledge in
 - NumPy
 - Pandas
 - Matplotlib
----
 ## 🛠 Software & Development Tools
 - Arduino IDE
 - Visual Studio Code
 - Git
 - GitHub
-- Proteus
+- Proteus Design Suite
 - MATLAB
 - Wokwi Simulator
----
 ## ⚡ Hardware Experience
 - ESP32 Development Board
 - Arduino Uno
@@ -45,15 +39,27 @@ Welcome to my technical skills page. I am continuously expanding my knowledge in
 - SH1106 OLED Display
 - Rain Sensor Module
 - L298N Motor Driver
----
 ## 🖥️ Design & Simulation
 - PCB Design
 - Circuit Simulation
 - Proteus Design Suite
 - Tinkercad
----
 ## 🌍 Languages
-| Language | Proficiency |
-|----------|-------------|
-| Bengali  | Native |
-| English  | Good (Reading, Writing & Technical Communication) |
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Proficiency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bengali</td>
+      <td>Native</td>
+    </tr>
+    <tr>
+      <td>English</td>
+      <td>Good (Reading, Writing & Technical Communication)</td>
+    </tr>
+  </tbody>
+</table>
