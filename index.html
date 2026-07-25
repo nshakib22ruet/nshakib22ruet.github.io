@@ -1,261 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Md. Najmus Shakib | Developer Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #1e293b;
-      --accent-color: #2563eb;
-      --card-bg: #f8fafc;
-      --border-color: #e2e8f0;
-      --subtext-color: #64748b;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Najmus Shakib | EEE Engineer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --bg: #060d18;
+    --bg-panel: #0e1c30;
+    --bg-panel-2: #0b1729;
+    --grid-line: rgba(120, 165, 230, 0.05);
+    --border: rgba(140, 180, 230, 0.16);
+    --border-strong: rgba(140, 180, 230, 0.32);
+    --accent: #43cdfb;
+    --accent-2: #6ee7ff;
+    --accent-soft: rgba(67, 205, 251, 0.14);
+    --copper: #d69a5c;
+    --copper-soft: rgba(214, 154, 92, 0.16);
+    --text: #e9eef8;
+    --text-muted: #8399b8;
+    --text-faint: #566a89;
+    --radius: 6px;
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "IBM Plex Sans", sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+  }
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background-color: var(--bg-color);
-      margin: 0;
-      padding: 0;
-    }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--text);
+    background-color: var(--bg);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
 
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(5px);
-      border-bottom: 1px solid var(--border-color);
-      z-index: 100;
-    }
+  ::selection { background: var(--accent-soft); color: var(--accent); }
+  a { color: inherit; }
 
-    .nav-container {
-      max-width: 950px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.5rem;
-    }
+  nav {
+    position: sticky; top: 0; z-index: 300;
+    background: rgba(6, 13, 24, 0.86);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-container {
+    max-width: 1000px; margin: 0 auto; display: flex; align-items: center;
+    justify-content: space-between; padding: 0.95rem 1.5rem; gap: 1rem;
+  }
+  .nav-brand {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+    letter-spacing: -0.01em; color: var(--text); text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem; white-space: nowrap;
+  }
+  .nav-brand .accent-dot { color: var(--accent); }
+  .nav-links { display: flex; gap: 1.4rem; list-style: none; margin: 0; padding: 0; overflow-x: auto; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-muted); font-size: 0.86rem; font-weight: 500;
+    letter-spacing: 0.01em; transition: color 0.2s; white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--accent); }
 
-    .nav-brand {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--text-color);
-      text-decoration: none;
-    }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+  .hero {
+    position: relative; min-height: 94vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 4rem 1.5rem 3rem; overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #0d2038 0%, var(--bg) 65%);
+  }
+  #network-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.55; }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--subtext-color);
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
+  .chip-frame { position: relative; width: 138px; height: 138px; margin: 0 auto 1.6rem; }
+  .chip-frame svg.leads { position: absolute; inset: -16px; width: calc(100% + 32px); height: calc(100% + 32px); z-index: 0; }
+  .chip-frame svg.leads line { stroke: var(--border-strong); stroke-width: 2; }
+  .chip-frame svg.leads circle { fill: var(--bg); stroke: var(--copper); stroke-width: 2; }
+  .profile-img {
+    position: relative; z-index: 1; width: 138px; height: 138px; border-radius: 50%;
+    object-fit: cover; border: 2px solid var(--accent);
+    box-shadow: 0 0 0 6px rgba(67,205,251,0.06), 0 0 40px -6px var(--accent);
+    background: var(--bg-panel);
+  }
+  .status-badge {
+    position: absolute; bottom: 2px; left: 2px; z-index: 2;
+    background: var(--bg-panel); border: 1px solid var(--border-strong); color: var(--accent);
+    font-size: 0.72rem; width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
 
-    .nav-links a:hover {
-      color: var(--accent-color);
-    }
+  .pill-badge {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    color: var(--accent-2); border: 1px solid var(--accent-soft); background: var(--accent-soft);
+    padding: 0.45rem 1rem; border-radius: 999px; margin-bottom: 1.6rem; text-transform: uppercase;
+  }
+  .pill-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 6px 1px var(--accent); animation: pulse 2.4s ease-in-out infinite;
+  }
 
-    /* Layout Container */
-    .container {
-      max-width: 950px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 7.2vw, 3.9rem);
+    line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 0.6rem;
+  }
+  .type-role {
+    font-family: var(--font-mono); color: var(--accent); font-size: clamp(1rem, 2.6vw, 1.25rem);
+    min-height: 1.8em; margin-bottom: 1.2rem;
+  }
+  .type-role .cursor { display: inline-block; width: 2px; background: var(--accent); margin-left: 2px; animation: pulse 1s steps(2) infinite; }
 
-    /* Header Profile */
-    header {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--border-color);
-    }
+  .hero-tagline { color: var(--text-muted); font-size: 1.02rem; max-width: 56ch; margin: 0 auto 1.9rem; }
 
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent-color);
-      flex-shrink: 0;
-    }
+  .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin-bottom: 2.6rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;
+    font-family: var(--font-mono); font-size: 0.82rem; padding: 0.65rem 1.15rem;
+    border-radius: 8px; border: 1px solid var(--border-strong); transition: all 0.2s; cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn-primary:hover { box-shadow: 0 0 22px -4px var(--accent); transform: translateY(-1px); }
+  .btn-ghost { background: rgba(255,255,255,0.02); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-outline { background: transparent; color: var(--accent); border-color: var(--accent); }
+  .btn-outline:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 18px -4px var(--accent); }
 
-    .header-info h1 {
-      margin: 0 0 0.4rem 0;
-      font-size: 2.2rem;
-    }
+  .hero-stats {
+    display: flex; justify-content: center; gap: 3rem; padding-top: 1.8rem;
+    border-top: 1px solid var(--border); margin: 0 auto 2rem; max-width: 340px;
+  }
+  .hero-stats .stat-value { font-family: var(--font-display); font-weight: 700; color: var(--accent); font-size: 1.3rem; }
+  .hero-stats .stat-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--text-faint); text-transform: uppercase; }
 
-    .header-info p {
-      margin: 0.2rem 0;
-      color: var(--subtext-color);
-    }
+  .scroll-cue { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+  .scroll-cue i { animation: bob 1.6s ease-in-out infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
-    .social-links {
-      margin-top: 1rem;
-      display: flex;
-      gap: 1.2rem;
-    }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
 
-    .social-links a {
-      color: var(--accent-color);
-      font-size: 1.3rem;
-      text-decoration: none;
-      transition: transform 0.2s;
-    }
+  section {
+    padding: 3.6rem 0; border-bottom: 1px solid var(--border);
+    background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
 
-    .social-links a:hover {
-      transform: translateY(-2px);
-    }
+  .eyebrow { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.6rem; }
+  .eyebrow .tag {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--copper);
+    border: 1px solid var(--copper-soft); background: var(--copper-soft); padding: 0.25rem 0.55rem;
+    border-radius: 3px; white-space: nowrap;
+  }
+  .eyebrow h2 { margin: 0; font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; }
+  .eyebrow::after { content: ""; flex: 1; height: 1px; background: repeating-linear-gradient(90deg, var(--border-strong) 0 6px, transparent 6px 12px); }
 
-    /* Sections */
-    section {
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--border-color);
-    }
+  p { color: var(--text-muted); }
+  section p { max-width: 68ch; }
 
-    h2 {
-      font-size: 1.6rem;
-      color: var(--text-color);
-      border-bottom: 2px solid var(--accent-color);
-      display: inline-block;
-      padding-bottom: 0.3rem;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-    }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 0; }
+  .tag-list li { background: var(--bg-panel); border: 1px solid var(--border); color: var(--text); padding: 0.32rem 0.7rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem; }
 
-    h3 {
-      font-size: 1.2rem;
-      margin-top: 1.2rem;
-      margin-bottom: 0.8rem;
-    }
+  h3 { font-family: var(--font-display); font-size: 1.05rem; margin: 1.5rem 0 0.8rem; color: var(--text); }
 
-    /* Lists & Tags */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
+  .focus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.1rem; }
+  .focus-card { border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 1.4rem; background: rgba(255,255,255,0.015); transition: border-color 0.2s, transform 0.2s; }
+  .focus-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .focus-card .icon { width: 42px; height: 42px; border: 1px solid var(--accent-soft); background: var(--accent-soft); color: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; margin-bottom: 1rem; }
+  .focus-card h4 { margin: 0 0 0.4rem; font-family: var(--font-display); font-size: 1.02rem; }
+  .focus-card p { margin: 0; font-size: 0.88rem; }
 
-    .skill-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1.2rem;
-    }
+  .plates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.1rem; }
+  .plate-card {
+    position: relative; text-align: left; cursor: pointer; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.3rem 1.35rem 1.2rem; color: var(--text); font: inherit;
+    background:
+      radial-gradient(circle at 14px 14px, rgba(0,0,0,0.5) 0 2.4px, transparent 3px),
+      radial-gradient(circle at calc(100% - 14px) 14px, rgba(0,0,0,0.5) 0 2.4px, transparent 3px),
+      radial-gradient(circle at 14px calc(100% - 14px), rgba(0,0,0,0.5) 0 2.4px, transparent 3px),
+      radial-gradient(circle at calc(100% - 14px) calc(100% - 14px), rgba(0,0,0,0.5) 0 2.4px, transparent 3px),
+      linear-gradient(160deg, #142743, #0f1e33);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .plate-card:hover, .plate-card:focus-visible { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 10px 26px -14px rgba(67,205,251,0.55); outline: none; }
+  .plate-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; }
+  .plate-icon { width: 34px; height: 34px; border-radius: 5px; display: flex; align-items: center; justify-content: center; background: var(--accent-soft); color: var(--accent); font-size: 0.95rem; }
+  .plate-count { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; color: var(--text-faint); }
+  .plate-card h4 { margin: 0 0 0.6rem; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; }
+  .plate-preview { font-size: 0.84rem; color: var(--text-muted); margin: 0 0 1rem; min-height: 2.6em; }
+  .plate-cta { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--copper); display: inline-flex; align-items: center; gap: 0.35rem; }
+  .plate-cta i { transition: transform 0.18s ease; }
+  .plate-card:hover .plate-cta i { transform: translateX(3px); }
 
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+  .info-table { width: 100%; border-collapse: collapse; margin-top: 0.9rem; font-size: 0.92rem; }
+  .info-table th, .info-table td { text-align: left; padding: 0.7rem 0.9rem; border: 1px solid var(--border); }
+  .info-table th { background: var(--bg-panel); font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; color: var(--text-faint); font-weight: 500; text-transform: uppercase; }
+  .info-table td { color: var(--text); }
+  .info-table tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
 
-    .tag-list li {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.88rem;
-      font-weight: 500;
-    }
+  .board-card { position: relative; background: var(--bg-panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.7rem 1.8rem; margin-top: 1rem; }
+  .board-card::before, .board-card::after { content: ""; position: absolute; width: 16px; height: 16px; border: 2px solid var(--border-strong); }
+  .board-card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .board-card::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+  .board-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+  .board-card h3 { margin-top: 0; }
+  .board-card p { max-width: 70ch; }
 
-    /* Tables */
-    .info-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
+  footer { text-align: center; padding: 2.2rem 0; color: var(--text-faint); font-family: var(--font-mono); font-size: 0.78rem; }
 
-    .info-table th, .info-table td {
-      text-align: left;
-      padding: 0.8rem 1rem;
-      border: 1px solid var(--border-color);
-    }
+  .overlay { position: fixed; inset: 0; background: rgba(4, 9, 18, 0.8); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .sheet {
+    position: relative; width: 100%; max-width: 620px; max-height: 85vh; overflow-y: auto;
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px), var(--bg-panel-2);
+    background-size: 24px 24px, 24px 24px, auto;
+    border: 1px solid var(--border-strong); border-top: 3px solid var(--accent);
+    border-radius: var(--radius); padding: 1.8rem 1.9rem 2rem; transform: translateY(14px) scale(0.98); transition: transform 0.22s ease;
+  }
+  .overlay.open .sheet { transform: translateY(0) scale(1); }
+  .sheet::before, .sheet::after { content: ""; position: absolute; width: 18px; height: 18px; border: 2px solid var(--border-strong); }
+  .sheet::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .sheet::after { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+  .sheet-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.3rem; padding-bottom: 1rem; border-bottom: 1px dashed var(--border-strong); }
+  .sheet-head .part-no { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--copper); display: block; margin-bottom: 0.35rem; }
+  .sheet-head h3 { margin: 0; font-size: 1.35rem; }
+  .sheet-close { flex-shrink: 0; width: 34px; height: 34px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text-muted); border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; transition: all 0.18s; }
+  .sheet-close:hover { color: var(--accent); border-color: var(--accent); }
+  .sheet-blurb { margin: 1rem 0 1.3rem; font-size: 0.92rem; color: var(--text-muted); }
+  .sheet-section-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--text-faint); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .sheet .tag-list li { background: var(--bg-panel); }
+  .waveform { display: block; margin-top: 1.5rem; opacity: 0.6; }
+  .waveform path { stroke: var(--accent); }
 
-    .info-table th {
-      background-color: var(--card-bg);
-    }
+  .cv-block { margin-bottom: 1.6rem; }
+  .cv-block .role-title { color: var(--text); font-weight: 600; }
+  .cv-block .sub { color: var(--text-faint); font-size: 0.85rem; font-family: var(--font-mono); }
 
-    /* Project Card */
-    .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-top: 1rem;
-    }
+  .back-to-top {
+    position: fixed; right: 1.4rem; bottom: 1.4rem; z-index: 250; width: 44px; height: 44px; border-radius: 50%;
+    background: var(--bg-panel); border: 1px solid var(--border-strong); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    opacity: 0; pointer-events: none; transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.2s;
+  }
+  .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { border-color: var(--accent); box-shadow: 0 0 16px -4px var(--accent); }
 
-    .project-card h3 {
-      margin-top: 0;
-    }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
 
-    .btn {
-      display: inline-block;
-      background-color: var(--accent-color);
-      color: #ffffff;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-top: 0.8rem;
-    }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .scroll-cue i, .pill-badge .dot, .status-badge, .type-role .cursor { animation: none; }
+  }
 
-    .btn:hover {
-      background-color: #1d4ed8;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      color: var(--subtext-color);
-      font-size: 0.88rem;
-    }
-
-    @media (max-width: 640px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      .nav-links {
-        gap: 0.8rem;
-        font-size: 0.85rem;
-      }
-      .social-links {
-        justify-content: center;
-      }
-    }
-  </style>
+  @media (max-width: 640px) {
+    .hero { min-height: auto; padding-top: 3rem; }
+    .hero-stats { gap: 2rem; }
+    .eyebrow h2 { font-size: 1.2rem; }
+    .nav-links { gap: 0.9rem; font-size: 0.8rem; }
+    section { padding: 2.4rem 0; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
   <nav>
     <div class="nav-container">
-      <a href="#" class="nav-brand">Md. Najmus Shakib</a>
+      <a href="#top" class="nav-brand">Shakib<span class="accent-dot">.</span></a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -267,37 +283,79 @@
     </div>
   </nav>
 
+  <section class="hero" id="top">
+    <canvas id="network-canvas"></canvas>
+    <div class="hero-content">
+      <div class="chip-frame">
+        <svg class="leads" viewBox="0 0 184 184">
+          <line x1="0" y1="46" x2="16" y2="46"></line>
+          <line x1="0" y1="92" x2="16" y2="92"></line>
+          <line x1="0" y1="138" x2="16" y2="138"></line>
+          <line x1="184" y1="46" x2="168" y2="46"></line>
+          <line x1="184" y1="92" x2="168" y2="92"></line>
+          <line x1="184" y1="138" x2="168" y2="138"></line>
+          <circle cx="4" cy="46" r="3.5"></circle>
+          <circle cx="4" cy="92" r="3.5"></circle>
+          <circle cx="4" cy="138" r="3.5"></circle>
+          <circle cx="180" cy="46" r="3.5"></circle>
+          <circle cx="180" cy="92" r="3.5"></circle>
+          <circle cx="180" cy="138" r="3.5"></circle>
+        </svg>
+        <img src="profile.jpg" alt="Md. Najmus Shakib" class="profile-img">
+        <span class="status-badge"><i class="fa-solid fa-bolt"></i></span>
+      </div>
+
+      <span class="pill-badge"><span class="dot"></span> Electrical &amp; Electronic Engineering</span>
+
+      <h1>Md. Najmus Shakib</h1>
+      <div class="type-role" id="type-role" aria-hidden="true"></div>
+
+      <p class="hero-tagline">
+        An EEE student building embedded systems and IoT projects &mdash; turning circuits and code into working prototypes through hands-on hardware and firmware development.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#skills" class="btn btn-primary">Explore My Work <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+        <a href="#cv" class="btn btn-outline"><i class="fa-solid fa-download"></i> View CV</a>
+      </div>
+
+      <div class="hero-stats">
+        <div><div class="stat-value">RUET</div><div class="stat-label">University</div></div>
+        <div><div class="stat-value">EEE</div><div class="stat-label">Discipline</div></div>
+        <div><div class="stat-value">3rd Yr</div><div class="stat-label">Standing</div></div>
+      </div>
+
+      <a href="#about" class="scroll-cue">Scroll to explore <i class="fa-solid fa-arrow-down"></i></a>
+    </div>
+  </section>
+
   <div class="container">
-    
-    <!-- Profile Header -->
-    <header id="about">
-      <img src="profile.jpg" alt="Md. Najmus Shakib" class="profile-img">
-      <div class="header-info">
-        <h1>Md. Najmus Shakib 👋</h1>
-        <p><strong>Undergraduate EEE Student at RUET</strong></p>
-        <p>Embedded Systems | IoT | Machine Learning | Signal Processing | Communication Systems | Biomedical Engineering</p>
-        <p><i class="fa-solid fa-location-dot"></i> Rajshahi, Bangladesh</p>
-        
-        <div class="social-links">
-          <a href="https://github.com/nshakib22ruet" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="mailto:nshakib22ruet@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+
+    <section id="about" class="reveal">
+      <div class="eyebrow"><span class="tag">&sect;01</span><h2>About</h2></div>
+      <p>I'm Md. Najmus Shakib, an undergraduate Electrical and Electronic Engineering (EEE) student at Rajshahi University of Engineering &amp; Technology (RUET), Bangladesh.</p>
+      <p>My interests span Embedded Systems, Internet of Things (IoT), Machine Learning, Signal Processing, Communication Systems, and Biomedical Engineering. I enjoy building practical engineering projects that combine hardware and firmware to solve real-world problems &mdash; from sensor circuits to the dashboards that read them.</p>
+      <p>I work primarily with ESP32, Arduino, C, C++, Python, MATLAB, and Git/GitHub, and I'm continuously extending that toolkit through coursework and self-directed builds.</p>
+
+      <h3>Focus Areas</h3>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+          <h4>Embedded Systems</h4>
+          <p>Designing firmware and sensor integrations on ESP32 and Arduino platforms.</p>
+        </div>
+        <div class="focus-card">
+          <div class="icon"><i class="fa-solid fa-wifi"></i></div>
+          <h4>IoT &amp; Connectivity</h4>
+          <p>Wiring up BLE-linked hardware to responsive, real-time web dashboards.</p>
+        </div>
+        <div class="focus-card">
+          <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h4>Applied Machine Learning</h4>
+          <p>Using regression and data-driven models to turn raw sensor readings into predictions.</p>
         </div>
       </div>
-    </header>
-
-    <!-- About & Research Section -->
-    <section>
-      <h2>About Me</h2>
-      <p>
-        Hi, I’m Md. Najmus Shakib 👋. I am an undergraduate Electrical and Electronic Engineering (EEE) student at Rajshahi University of Engineering & Technology (RUET), Bangladesh.
-      </p>
-      <p>
-        My interests include Embedded Systems, Internet of Things (IoT), Machine Learning, Signal Processing, Communication Systems, and Biomedical Engineering. I enjoy building practical engineering projects that combine hardware and software to solve real-world problems.
-      </p>
-      <p>
-        I have experience with ESP32, Arduino, C, C++, Python, MATLAB, and GitHub. I am continuously learning new technologies and improving my engineering and research skills.
-      </p>
 
       <h3>Research Interests</h3>
       <ul class="tag-list">
@@ -310,121 +368,36 @@
       </ul>
 
       <h3>Career Goal</h3>
-      <p>My goal is to become a skilled engineer and researcher, contributing to innovative solutions in embedded systems, intelligent systems, and communication technologies.</p>
+      <p>To grow into a skilled engineer and researcher, contributing to real solutions in embedded systems, intelligent systems, and communication technologies.</p>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <p>Welcome to my technical skills page. I am continuously expanding my knowledge in embedded systems, IoT, machine learning, and software development through academic projects and self-learning.</p>
-      
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>💻 Programming Languages</h3>
-          <ul class="tag-list">
-            <li>C</li>
-            <li>C++</li>
-            <li>Python</li>
-            <li>MATLAB</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>🔌 Embedded Systems & IoT</h3>
-          <ul class="tag-list">
-            <li>ESP32</li>
-            <li>Arduino</li>
-            <li>Bluetooth Low Energy (BLE)</li>
-            <li>Sensor Interfacing</li>
-            <li>Embedded C</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>🤖 Machine Learning & Data Analysis</h3>
-          <ul class="tag-list">
-            <li>Machine Learning Fundamentals</li>
-            <li>Quadratic Regression</li>
-            <li>Data Analysis</li>
-            <li>NumPy</li>
-            <li>Pandas</li>
-            <li>Matplotlib</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>🛠 Software & Development Tools</h3>
-          <ul class="tag-list">
-            <li>Arduino IDE</li>
-            <li>Visual Studio Code</li>
-            <li>Git</li>
-            <li>GitHub</li>
-            <li>Proteus Design Suite</li>
-            <li>MATLAB</li>
-            <li>Wokwi Simulator</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>⚡ Hardware Experience</h3>
-          <ul class="tag-list">
-            <li>ESP32 Development Board</li>
-            <li>Arduino Uno</li>
-            <li>DHT11 Temp & Humidity Sensor</li>
-            <li>HC-SR04 Ultrasonic Sensor</li>
-            <li>SH1106 OLED Display</li>
-            <li>Rain Sensor Module</li>
-            <li>L298N Motor Driver</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>🖥️ Design & Simulation</h3>
-          <ul class="tag-list">
-            <li>PCB Design</li>
-            <li>Circuit Simulation</li>
-            <li>Proteus Design Suite</li>
-            <li>Tinkercad</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3 style="margin-top: 1.5rem;">🌍 Languages</h3>
-      <table class="info-table" style="max-width: 500px;">
-        <thead>
-          <tr>
-            <th>Language</th>
-            <th>Proficiency</th>
-          </tr>
-        </thead>
+    <section id="skills" class="reveal">
+      <div class="eyebrow"><span class="tag">&sect;02</span><h2>Technical Skills</h2></div>
+      <p style="margin-bottom: 1.6rem;">Each plate below is a summary &mdash; click one to open its full datasheet.</p>
+      <div class="plates-grid" id="plates-grid"></div>
+      <h3>Languages</h3>
+      <table class="info-table" style="max-width: 480px;">
+        <thead><tr><th>Language</th><th>Proficiency</th></tr></thead>
         <tbody>
-          <tr>
-            <td>Bengali</td>
-            <td>Native</td>
-          </tr>
-          <tr>
-            <td>English</td>
-            <td>Good (Reading, Writing & Technical Communication)</td>
-          </tr>
+          <tr><td>Bengali</td><td>Native</td></tr>
+          <tr><td>English</td><td>Good (reading, writing &amp; technical communication)</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-      <h2>Portfolio</h2>
-      <div class="project-card">
-        <h3>ESP32 IoT Weather & Flood Monitoring System</h3>
-        <p>An ESP32-based IoT system for real-time weather monitoring and flood prediction using Machine Learning. Developed for monitoring temperature, humidity, rainfall, and water level. Integrates Bluetooth Low Energy (BLE), an SH1106 OLED display, and a Quadratic Regression machine learning model for environmental prediction and flood-risk monitoring.</p>
-        <a href="https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System" target="_blank" class="btn"><i class="fa-brands fa-github"></i> Project-1-ESP32-Weather-Flood-Monitoring-System</a>
+    <section id="portfolio" class="reveal">
+      <div class="eyebrow"><span class="tag">&sect;03</span><h2>Portfolio</h2></div>
+      <div class="board-card">
+        <span class="board-label">BOARD: PROJECT-01 // WEATHER-FLOOD-ESP32</span>
+        <h3>ESP32 IoT Weather &amp; Flood Monitoring System</h3>
+        <p>An ESP32-based IoT system for real-time weather monitoring and flood prediction using machine learning. It tracks temperature, humidity, rainfall, and water level, and integrates Bluetooth Low Energy (BLE), an SH1106 OLED display, and a quadratic regression model for environmental prediction and flood-risk monitoring.</p>
+        <a href="https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View repository</a>
       </div>
     </section>
 
-    <!-- Publications Section -->
-    <section id="publications">
-      <h2>Publications</h2>
-      <p>I do not have any publications at this time.</p>
-      <p>I am actively working on academic projects and intend to publish research articles in the future, particularly in the areas of:</p>
+    <section id="publications" class="reveal">
+      <div class="eyebrow"><span class="tag">&sect;04</span><h2>Publications</h2></div>
+      <p>No publications yet. I'm actively working on academic projects and intend to publish research articles in the future, particularly in:</p>
       <ul class="tag-list">
         <li>Embedded Systems</li>
         <li>Internet of Things (IoT)</li>
@@ -434,111 +407,251 @@
       </ul>
     </section>
 
-    <!-- Curriculum Vitae Section -->
-    <section id="cv">
-      <h2>Curriculum Vitae</h2>
-      <p>📄 Download PDF Version (Coming Soon)</p>
-
+    <section id="cv" class="reveal">
+      <div class="eyebrow"><span class="tag">&sect;05</span><h2>Curriculum Vitae</h2></div>
       <h3>Personal Information</h3>
       <table class="info-table">
         <tbody>
-          <tr>
-            <th>Full Name</th>
-            <td>Md. Najmus Shakib</td>
-          </tr>
-          <tr>
-            <th>Date of Birth</th>
-            <td>02 August 2004</td>
-          </tr>
-          <tr>
-            <th>Nationality</th>
-            <td>Bangladeshi</td>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <td><a href="mailto:nshakib22ruet@gmail.com">nshakib22ruet@gmail.com</a></td>
-          </tr>
-          <tr>
-            <th>Phone</th>
-            <td>+880 1770-222637</td>
-          </tr>
-          <tr>
-            <th>GitHub</th>
-            <td><a href="https://github.com/nshakib22ruet" target="_blank">github.com/nshakib22ruet</a></td>
-          </tr>
-          <tr>
-            <th>LinkedIn</th>
-            <td><a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank">linkedin.com/in/md-najmus-shakib-4064102bb</a></td>
-          </tr>
+          <tr><th>Full Name</th><td>Md. Najmus Shakib</td></tr>
+          <tr><th>Date of Birth</th><td>02 August 2004</td></tr>
+          <tr><th>Nationality</th><td>Bangladeshi</td></tr>
+          <tr><th>Email</th><td><a href="mailto:nshakib22ruet@gmail.com">nshakib22ruet@gmail.com</a></td></tr>
+          <tr><th>Phone</th><td>+880 1770-222637</td></tr>
+          <tr><th>GitHub</th><td><a href="https://github.com/nshakib22ruet" target="_blank">github.com/nshakib22ruet</a></td></tr>
+          <tr><th>LinkedIn</th><td><a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank">linkedin.com/in/md-najmus-shakib-4064102bb</a></td></tr>
         </tbody>
       </table>
-
       <h3>Career Objective</h3>
-      <p>Motivated undergraduate Electrical and Electronic Engineering student with a strong interest in Embedded Systems, Internet of Things (IoT), Machine Learning, and Signal Processing. Passionate about developing intelligent engineering solutions through hardware and software integration. Seeking opportunities to contribute to research, innovation, and real-world engineering projects while continuously enhancing my technical expertise.</p>
-
+      <p>Motivated undergraduate EEE student with a strong interest in embedded systems, IoT, machine learning, and signal processing. Passionate about developing intelligent engineering solutions through hardware and software integration, and seeking opportunities to contribute to research, innovation, and real-world engineering projects.</p>
       <h3>Education</h3>
-      <p><strong>Bachelor of Science in Engineering (B.Sc. Eng.)</strong><br>
-      Department: Electrical & Electronic Engineering (EEE)<br>
-      University: Rajshahi University of Engineering & Technology (RUET)<br>
-      Session: 2022–2023 | Current Year: 3rd Year | Expected Graduation: December 2027</p>
-
-      <p><strong>Higher Secondary Certificate (HSC)</strong><br>
-      Institution: Rangpur Government College<br>
-      Group: Science | Passing Year: 2022 | Result: GPA 5.00</p>
-
-      <p><strong>Secondary School Certificate (SSC)</strong><br>
-      Institution: Bir Uttam Shaheed Samad School & College<br>
-      Group: Science | Passing Year: 2020 | Result: GPA 5.00</p>
-
+      <div class="cv-block">
+        <div class="role-title">Bachelor of Science in Engineering (B.Sc. Eng.)</div>
+        <div class="sub">EEE &middot; RUET &middot; Session 2022&ndash;2023 &middot; 3rd Year &middot; Expected Graduation: December 2027</div>
+      </div>
+      <div class="cv-block">
+        <div class="role-title">Higher Secondary Certificate (HSC)</div>
+        <div class="sub">Rangpur Government College &middot; Science &middot; 2022 &middot; GPA 5.00</div>
+      </div>
+      <div class="cv-block">
+        <div class="role-title">Secondary School Certificate (SSC)</div>
+        <div class="sub">Bir Uttam Shaheed Samad School &amp; College &middot; Science &middot; 2020 &middot; GPA 5.00</div>
+      </div>
       <h3>Address Details</h3>
-      <p><strong>Present Address:</strong> Kazla, Rajshahi-6204, Bangladesh</p>
-      <p><strong>Permanent Address:</strong> Village: Parbotipur, Post Office: Uposhohor, Upazila: Rangpur Sadar, District: Rangpur-5401, Bangladesh</p>
-
+      <p><strong style="color: var(--text);">Present Address:</strong> Kazla, Rajshahi-6204, Bangladesh</p>
+      <p><strong style="color: var(--text);">Permanent Address:</strong> Village: Parbotipur, Post Office: Uposhohor, Upazila: Rangpur Sadar, District: Rangpur-5401, Bangladesh</p>
       <h3>References</h3>
       <p>Available upon request.</p>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact Information</h2>
-      <p>Thank you for visiting my portfolio. I welcome opportunities for research, engineering projects, internships, and professional collaboration.</p>
-
+    <section id="contact" class="reveal" style="border-bottom: none;">
+      <div class="eyebrow"><span class="tag">&sect;06</span><h2>Contact</h2></div>
+      <p>Open to research, engineering projects, internships, and professional collaboration.</p>
       <table class="info-table">
-        <thead>
-          <tr>
-            <th>Contact</th>
-            <th>Details</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Channel</th><th>Details</th></tr></thead>
         <tbody>
-          <tr>
-            <td>📧 Email</td>
-            <td><a href="mailto:nshakib22ruet@gmail.com">nshakib22ruet@gmail.com</a></td>
-          </tr>
-          <tr>
-            <td>💻 GitHub</td>
-            <td><a href="https://github.com/nshakib22ruet" target="_blank">github.com/nshakib22ruet</a></td>
-          </tr>
-          <tr>
-            <td>💼 LinkedIn</td>
-            <td><a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank">linkedin.com/in/md-najmus-shakib-4064102bb</a></td>
-          </tr>
-          <tr>
-            <td>📍 Current Location</td>
-            <td>Rajshahi, Bangladesh</td>
-          </tr>
-          <tr>
-            <td>🏠 Permanent Address</td>
-            <td>Rangpur Sadar, Rangpur 5401, Bangladesh</td>
-          </tr>
+          <tr><td>Email</td><td><a href="mailto:nshakib22ruet@gmail.com">nshakib22ruet@gmail.com</a></td></tr>
+          <tr><td>GitHub</td><td><a href="https://github.com/nshakib22ruet" target="_blank">github.com/nshakib22ruet</a></td></tr>
+          <tr><td>LinkedIn</td><td><a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank">linkedin.com/in/md-najmus-shakib-4064102bb</a></td></tr>
+          <tr><td>Current Location</td><td>Rajshahi, Bangladesh</td></tr>
+          <tr><td>Permanent Address</td><td>Rangpur Sadar, Rangpur 5401, Bangladesh</td></tr>
         </tbody>
       </table>
     </section>
 
-    <footer>
-      <p>&copy; 2026 Md. Najmus Shakib. Hosted on GitHub Pages.</p>
-    </footer>
+    <footer>&copy; 2026 Md. Najmus Shakib &middot; Hosted on GitHub Pages</footer>
   </div>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <div class="overlay" id="overlay">
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <div class="sheet-head">
+        <div>
+          <span class="part-no" id="sheet-part"></span>
+          <h3 id="sheet-title"></h3>
+        </div>
+        <button class="sheet-close" id="sheet-close" aria-label="Close datasheet"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p class="sheet-blurb" id="sheet-blurb"></p>
+      <div class="sheet-section-label">Full item list</div>
+      <ul class="tag-list" id="sheet-items"></ul>
+      <svg class="waveform" viewBox="0 0 560 40" width="100%" height="40">
+        <path d="M0 20 L40 20 L55 4 L70 36 L85 20 L120 20 L135 8 L150 32 L165 20 L560 20" fill="none" stroke-width="1.6"></path>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    const skillsData = [
+      { id: "U1", icon: "fa-solid fa-code", title: "Programming Languages",
+        blurb: "Core languages used across firmware development, control-system modeling, and data analysis.",
+        items: ["C", "C++", "Python", "MATLAB"] },
+      { id: "U2", icon: "fa-solid fa-microchip", title: "Embedded Systems & IoT",
+        blurb: "Firmware and connectivity skills behind ESP32-based sensor systems and wireless dashboards.",
+        items: ["ESP32", "Arduino", "Bluetooth Low Energy (BLE)", "Sensor Interfacing", "Embedded C"] },
+      { id: "U3", icon: "fa-solid fa-chart-line", title: "Machine Learning & Data Analysis",
+        blurb: "Applied modeling techniques used for prediction and analysis in sensor-driven projects.",
+        items: ["Machine Learning Fundamentals", "Quadratic Regression", "Data Analysis", "NumPy", "Pandas", "Matplotlib"] },
+      { id: "U4", icon: "fa-solid fa-screwdriver-wrench", title: "Software & Development Tools",
+        blurb: "Day-to-day toolchain for writing, simulating, and versioning firmware and analysis code.",
+        items: ["Arduino IDE", "Visual Studio Code", "Git", "GitHub", "Proteus Design Suite", "MATLAB", "Wokwi Simulator"] },
+      { id: "U5", icon: "fa-solid fa-bolt", title: "Hardware Experience",
+        blurb: "Boards and modules used hands-on across embedded and control-system builds.",
+        items: ["ESP32 Development Board", "Arduino Uno", "DHT11 Temp & Humidity Sensor", "HC-SR04 Ultrasonic Sensor", "SH1106 OLED Display", "Rain Sensor Module", "L298N Motor Driver"] },
+      { id: "U6", icon: "fa-solid fa-diagram-project", title: "Design & Simulation",
+        blurb: "Tools used for circuit layout and pre-build validation before hardware assembly.",
+        items: ["PCB Design", "Circuit Simulation", "Proteus Design Suite", "Tinkercad"] }
+    ];
+
+    const grid = document.getElementById("plates-grid");
+    skillsData.forEach((cat, i) => {
+      const card = document.createElement("button");
+      card.className = "plate-card";
+      card.type = "button";
+      card.setAttribute("data-index", i);
+      card.innerHTML = `
+        <div class="plate-top">
+          <span class="plate-icon"><i class="${cat.icon}"></i></span>
+          <span class="plate-count">${cat.id} &middot; ${cat.items.length} ITEMS</span>
+        </div>
+        <h4>${cat.title}</h4>
+        <p class="plate-preview">${cat.items.slice(0, 3).join(" &middot; ")}${cat.items.length > 3 ? " &middot; &hellip;" : ""}</p>
+        <span class="plate-cta">VIEW DATASHEET <i class="fa-solid fa-arrow-right"></i></span>
+      `;
+      grid.appendChild(card);
+    });
+
+    const overlay = document.getElementById("overlay");
+    const sheetPart = document.getElementById("sheet-part");
+    const sheetTitle = document.getElementById("sheet-title");
+    const sheetBlurb = document.getElementById("sheet-blurb");
+    const sheetItems = document.getElementById("sheet-items");
+    const closeBtn = document.getElementById("sheet-close");
+    let lastFocused = null;
+
+    function openSheet(index) {
+      const cat = skillsData[index];
+      sheetPart.textContent = `DATASHEET // ${cat.id}`;
+      sheetTitle.textContent = cat.title;
+      sheetBlurb.textContent = cat.blurb;
+      sheetItems.innerHTML = cat.items.map(item => `<li>${item}</li>`).join("");
+      lastFocused = document.activeElement;
+      overlay.classList.add("open");
+      closeBtn.focus();
+      document.body.style.overflow = "hidden";
+    }
+    function closeSheet() {
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+      if (lastFocused) lastFocused.focus();
+    }
+    grid.addEventListener("click", (e) => {
+      const card = e.target.closest(".plate-card");
+      if (card) openSheet(Number(card.getAttribute("data-index")));
+    });
+    closeBtn.addEventListener("click", closeSheet);
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) closeSheet(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && overlay.classList.contains("open")) closeSheet();
+    });
+
+    const roles = ["Embedded Systems Builder", "IoT Developer", "EEE Student @ RUET", "Firmware Tinkerer"];
+    const typeEl = document.getElementById("type-role");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      typeEl.textContent = roles[0];
+    } else {
+      let roleIndex = 0, charIndex = 0, deleting = false;
+      function tick() {
+        const current = roles[roleIndex];
+        if (!deleting) {
+          charIndex++;
+          if (charIndex > current.length) { deleting = true; setTimeout(tick, 1400); return; }
+        } else {
+          charIndex--;
+          if (charIndex < 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; charIndex = 0; }
+        }
+        typeEl.innerHTML = current.slice(0, charIndex) + '<span class="cursor">&nbsp;</span>';
+        setTimeout(tick, deleting ? 35 : 65);
+      }
+      tick();
+    }
+
+    const revealEls = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add("in-view"));
+    }
+
+    const backToTop = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("show", window.scrollY > 500);
+    });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    (function () {
+      const canvas = document.getElementById("network-canvas");
+      const ctx = canvas.getContext("2d");
+      const hero = document.querySelector(".hero");
+      let w, h, particles;
+
+      function resize() { w = canvas.width = hero.clientWidth; h = canvas.height = hero.clientHeight; }
+
+      function initParticles() {
+        const count = Math.min(70, Math.floor((w * h) / 16000));
+        particles = Array.from({ length: count }, () => ({
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35
+        }));
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        });
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 130) {
+              ctx.strokeStyle = `rgba(67,205,251,${(1 - dist / 130) * 0.35})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+        particles.forEach(p => {
+          ctx.fillStyle = "rgba(110,231,255,0.8)";
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        if (!reduceMotion) requestAnimationFrame(step);
+      }
+
+      resize();
+      initParticles();
+      if (!reduceMotion) { requestAnimationFrame(step); } else { step(); }
+      window.addEventListener("resize", () => { resize(); initParticles(); });
+    })();
+  </script>
 
 </body>
 </html>
