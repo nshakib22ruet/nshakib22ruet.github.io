@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Najmus Shakib | EEE Engineer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --bg: #060d18;
+    --bg-panel: #0e1c30;
+    --bg-panel-2: #0b1729;
+    --grid-line: rgba(120, 165, 230, 0.05);
+    --border: rgba(140, 180, 230, 0.16);
+    --border-strong: rgba(140, 180, 230, 0.32);
+    --accent: #43cdfb;
+    --accent-2: #6ee7ff;
+    --accent-soft: rgba(67, 205, 251, 0.14);
+    --copper: #d69a5c;
+    --copper-soft: rgba(214, 154, 92, 0.16);
+    --text: #e9eef8;
+    --text-muted: #8399b8;
+    --text-faint: #566a89;
+    --radius: 6px;
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "IBM Plex Sans", sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--text);
+    background-color: var(--bg);
+    line-height: 1.65;
+    overflow-x: hidden;
+    padding-bottom: 70px; /* Space for sticky bottom contact bar */
+  }
+
+  ::selection { background: var(--accent-soft); color: var(--accent); }
+  a { color: inherit; }
+
+  /* Ambient drifting glow, fixed behind the whole page for a lively feel top to bottom */
+  body::before, body::after {
+    content: ""; position: fixed; z-index: -3; border-radius: 50%;
+    filter: blur(100px); pointer-events: none; opacity: 0.28; will-change: transform;
+  }
+  body::before {
+    width: 46vw; height: 46vw; max-width: 560px; max-height: 560px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    top: -14vw; left: -12vw; animation: driftGlowA 24s ease-in-out infinite;
+  }
+  body::after {
+    width: 42vw; height: 42vw; max-width: 520px; max-height: 520px;
+    background: radial-gradient(circle, var(--copper) 0%, transparent 70%);
+    bottom: -12vw; right: -10vw; animation: driftGlowB 28s ease-in-out infinite;
+  }
+  @keyframes driftGlowA {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(8vw, 6vw) scale(1.15); }
+  }
+  @keyframes driftGlowB {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-7vw, -5vw) scale(1.1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    body::before, body::after { animation: none; }
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 300;
+    background: rgba(6, 13, 24, 0.86);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-container {
+    max-width: 1000px; margin: 0 auto; display: flex; align-items: center;
+    justify-content: space-between; padding: 0.95rem 1.5rem; gap: 1rem;
+  }
+  .nav-brand {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+    letter-spacing: -0.01em; color: var(--text); text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem; white-space: nowrap;
+  }
+  .nav-brand .accent-dot { color: var(--accent); display: inline-block; animation: pulse 2.4s ease-in-out infinite; }
+  .nav-links { display: flex; gap: 1.4rem; list-style: none; margin: 0; padding: 0; overflow-x: auto; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-muted); font-size: 0.86rem; font-weight: 500;
+    letter-spacing: 0.01em; transition: color 0.2s; white-space: nowrap; cursor: pointer;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  .hero {
+    position: relative; min-height: 90vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 4rem 1.5rem 3rem; overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13, 32, 56, 0.78) 0%, rgba(6, 13, 24, 0.35) 65%);
+  }
+  #network-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -2; opacity: 0.4; pointer-events: none; }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+
+  .chip-frame { position: relative; width: 175px; height: 175px; margin: 0 auto 1.6rem; }
+  .chip-frame svg.leads { position: absolute; inset: -18px; width: calc(100% + 36px); height: calc(100% + 36px); z-index: 0; }
+  .chip-frame svg.leads line { stroke: var(--border-strong); stroke-width: 2; }
+  .chip-frame svg.leads circle { fill: var(--bg); stroke: var(--copper); stroke-width: 2; }
+  .profile-img {
+    position: relative; z-index: 1; width: 175px; height: 175px; border-radius: 50%;
+    object-fit: cover; border: 2px solid var(--accent);
+    box-shadow: 0 0 0 6px rgba(67,205,251,0.06), 0 0 40px -6px var(--accent);
+    background: var(--bg-panel);
+    animation: profileGlow 3.6s ease-in-out infinite;
+  }
+  @keyframes profileGlow {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(67,205,251,0.06), 0 0 40px -6px var(--accent); }
+    50% { box-shadow: 0 0 0 11px rgba(67,205,251,0.11), 0 0 58px -4px var(--accent); }
+  }
+  .status-badge {
+    position: absolute; bottom: 4px; left: 4px; z-index: 2;
+    background: var(--bg-panel); border: 1px solid var(--border-strong); color: var(--accent);
+    font-size: 0.8rem; width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .pill-badge {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    color: var(--accent-2); border: 1px solid var(--accent-soft); background: var(--accent-soft);
+    padding: 0.45rem 1rem; border-radius: 999px; margin-bottom: 1.6rem; text-transform: uppercase;
+  }
+  .pill-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 6px 1px var(--accent); animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 7.2vw, 3.9rem);
+    line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 0.6rem;
+  }
+  .type-role {
+    font-family: var(--font-mono); color: var(--accent); font-size: clamp(1rem, 2.6vw, 1.25rem);
+    min-height: 1.8em; margin-bottom: 1.2rem;
+  }
+  .type-role .cursor { display: inline-block; width: 2px; background: var(--accent); margin-left: 2px; animation: pulse 1s steps(2) infinite; }
+
+  .hero-tagline { color: var(--text-muted); font-size: 1.02rem; max-width: 56ch; margin: 0 auto 1.9rem; }
+
+  .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 2.6rem; }
+  
+  .social-icons-bar { display: flex; align-items: center; gap: 0.75rem; }
+  .icon-btn {
+    width: 42px; height: 42px; border-radius: 8px; border: 1px solid var(--border-strong);
+    background: rgba(255,255,255,0.02); color: var(--text); display: flex;
+    align-items: center; justify-content: center; font-size: 1.1rem;
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .icon-btn:hover {
+    border-color: var(--accent); color: var(--accent); transform: translateY(-2px);
+    box-shadow: 0 0 16px -4px var(--accent);
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;
+    font-family: var(--font-mono); font-size: 0.82rem; padding: 0.65rem 1.15rem;
+    border-radius: 8px; border: 1px solid var(--border-strong); transition: all 0.2s; cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); animation: btnPulse 2.8s ease-in-out infinite; }
+  .btn-primary:hover { box-shadow: 0 0 22px -4px var(--accent); transform: translateY(-1px); animation-play-state: paused; }
+  @keyframes btnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(67,205,251,0.3); }
+    50% { box-shadow: 0 0 16px 1px rgba(67,205,251,0.32); }
+  }
+  .btn-ghost { background: rgba(255,255,255,0.02); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-outline { background: transparent; color: var(--accent); border-color: var(--accent); }
+  .btn-outline:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 18px -4px var(--accent); }
+
+  .hero-stats {
+    display: flex; justify-content: center; gap: 3rem; padding-top: 1.8rem;
+    border-top: 1px solid var(--border); margin: 0 auto 2rem; max-width: 340px;
+  }
+  .hero-stats .stat-value { font-family: var(--font-display); font-weight: 700; color: var(--accent); font-size: 1.3rem; }
+  .hero-stats .stat-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--text-faint); text-transform: uppercase; }
+
+  .scroll-cue { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+  .scroll-cue i { animation: bob 1.6s ease-in-out infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+
+  section {
+    padding: 3.6rem 0; border-bottom: 1px solid var(--border);
+    background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  .page-view { display: none; }
+  .page-view.active-page { display: block; }
+
+  .eyebrow { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.6rem; }
+  .eyebrow .tag {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--copper);
+    border: 1px solid var(--copper-soft); background: var(--copper-soft); padding: 0.25rem 0.55rem;
+    border-radius: 3px; white-space: nowrap; animation: tagGlow 3.2s ease-in-out infinite;
+  }
+  @keyframes tagGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(214,154,92,0); }
+    50% { box-shadow: 0 0 10px 1px rgba(214,154,92,0.32); }
+  }
+  .eyebrow h2 { margin: 0; font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; }
+  .eyebrow::after {
+    content: ""; flex: 1; height: 1px; background-size: 24px 100%;
+    background-image: repeating-linear-gradient(90deg, var(--border-strong) 0 6px, transparent 6px 12px);
+    animation: dashSlide 3.2s linear infinite;
+  }
+  @keyframes dashSlide { from { background-position: 0 0; } to { background-position: 24px 0; } }
+
+  /* Dynamic Centered About Me Styles */
+  .about-centered {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .about-centered .eyebrow {
+    justify-content: center;
+  }
+  .about-centered .eyebrow::after {
+    display: none;
+  }
+  .about-bio-lead {
+    font-size: 1.15rem;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .about-bio-body {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0 auto 2rem;
+    max-width: 68ch;
+  }
+  .focus-grid-centered {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin: 2.2rem 0;
+  }
+  .focus-grid-centered .focus-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .career-box-centered {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  p { color: var(--text-muted); }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 0; justify-content: center; }
+  .tag-list li { background: var(--bg-panel); border: 1px solid var(--border); color: var(--text); padding: 0.32rem 0.7rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem; }
+
+  h3 { font-family: var(--font-display); font-size: 1.1rem; margin: 1.8rem 0 1rem; color: var(--text); text-align: center; }
+
+  /* Skills & Plates */
+  .plates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.1rem; }
+  .plate-card {
+    position: relative; text-align: left; cursor: pointer; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.3rem 1.35rem 1.2rem; color: var(--text); font: inherit;
+    background:
+      radial-gradient(circle at 14px 14px, rgba(0,0,0,0.5) 0 2.4px, transparent 3px),
+      radial-gradient(circle at calc(100% - 14px) 14px, rgba(0,0,0,0.5) 0 2.4px, transparent 3px),
+      radial-gradient(circle at 14px calc(100% - 14px), rgba(0,0,0,0.5) 0 2.4px, transparent 3px),
+      radial-gradient(circle at calc(100% - 14px) calc(100% - 14px), rgba(0,0,0,0.5) 0 2.4px, transparent 3px),
+      linear-gradient(160deg, #142743, #0f1e33);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .plate-card:hover, .plate-card:focus-visible { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 10px 26px -14px rgba(67,205,251,0.55); outline: none; }
+  .plate-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; }
+  .plate-icon { width: 34px; height: 34px; border-radius: 5px; display: flex; align-items: center; justify-content: center; background: var(--accent-soft); color: var(--accent); font-size: 0.95rem; }
+  .plate-count { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; color: var(--text-faint); }
+  .plate-card h4 { margin: 0 0 0.6rem; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; }
+  .plate-preview { font-size: 0.84rem; color: var(--text-muted); margin: 0 0 1rem; min-height: 2.6em; }
+  .plate-cta { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--copper); display: inline-flex; align-items: center; gap: 0.35rem; }
+  .plate-cta i { transition: transform 0.18s ease; }
+  .plate-card:hover .plate-cta i { transform: translateX(3px); }
+
+  /* Project Centered Layout */
+  .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.2rem; }
+  .project-card {
+    position: relative; background: var(--bg-panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.8rem; display: flex; flex-direction: column;
+    justify-content: space-between; transition: all 0.25s ease;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.35); }
+  .project-badge { font-family: var(--font-mono); font-size: 0.7rem; color: var(--copper); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; display: block; }
+  .project-card h3 { text-align: left; margin: 0 0 0.6rem; font-size: 1.2rem; color: var(--text); }
+  .project-card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+
+  /* Project Slides (name-only, full-width, serial order) */
+  .project-slides { display: flex; flex-direction: column; gap: 1rem; }
+  .project-slide {
+    display: flex; align-items: center; gap: 1rem; width: 100%;
+    padding: 1.3rem 1.6rem; border: 1px solid var(--border); border-radius: var(--radius);
+    background: linear-gradient(160deg, #142743, #0f1e33); cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .project-slide:hover, .project-slide:focus-visible {
+    transform: translateX(4px); border-color: var(--accent);
+    box-shadow: 0 10px 26px -14px rgba(67,205,251,0.55); outline: none;
+  }
+  .project-slide .slide-serial {
+    font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em;
+    color: var(--copper); flex-shrink: 0; min-width: 34px;
+  }
+  .project-slide .slide-name {
+    flex: 1; text-align: left; font-family: var(--font-display);
+    font-weight: 600; font-size: 1.05rem; color: var(--text);
+  }
+  .project-slide .slide-badge {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em;
+    color: var(--text-faint); flex-shrink: 0; display: none;
+  }
+  @media (min-width: 640px) {
+    .project-slide .slide-badge { display: inline-block; }
+  }
+  .project-slide .slide-arrow { color: var(--accent); flex-shrink: 0; transition: transform 0.18s ease; }
+  .project-slide:hover .slide-arrow { transform: translateX(3px); }
+
+  /* Staggered entrance for grid/list items (uses `translate`, kept separate from hover `transform`) */
+  .focus-grid-centered .focus-card,
+  .plates-grid .plate-card,
+  .project-slides .project-slide {
+    opacity: 0; translate: 0 14px;
+    transition: opacity 0.5s ease, translate 0.5s ease;
+  }
+  .reveal.in-view .focus-grid-centered .focus-card,
+  .reveal.in-view .plates-grid .plate-card,
+  .reveal.in-view .project-slides .project-slide {
+    opacity: 1; translate: 0 0;
+  }
+  .focus-grid-centered .focus-card:nth-child(1), .plates-grid .plate-card:nth-child(1), .project-slides .project-slide:nth-child(1) { transition-delay: 0.05s; }
+  .focus-grid-centered .focus-card:nth-child(2), .plates-grid .plate-card:nth-child(2), .project-slides .project-slide:nth-child(2) { transition-delay: 0.15s; }
+  .focus-grid-centered .focus-card:nth-child(3), .plates-grid .plate-card:nth-child(3), .project-slides .project-slide:nth-child(3) { transition-delay: 0.25s; }
+  .plates-grid .plate-card:nth-child(4), .project-slides .project-slide:nth-child(4) { transition-delay: 0.35s; }
+  .plates-grid .plate-card:nth-child(5), .project-slides .project-slide:nth-child(5) { transition-delay: 0.45s; }
+  .plates-grid .plate-card:nth-child(6), .project-slides .project-slide:nth-child(6) { transition-delay: 0.55s; }
+
+  /* Gentle floating motion on icons */
+  @keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  .focus-card .icon, .plate-icon { animation: iconFloat 3.4s ease-in-out infinite; }
+  .focus-grid-centered .focus-card:nth-child(2) .icon { animation-delay: 0.3s; }
+  .focus-grid-centered .focus-card:nth-child(3) .icon { animation-delay: 0.6s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .focus-grid-centered .focus-card,
+    .plates-grid .plate-card,
+    .project-slides .project-slide {
+      opacity: 1; translate: 0 0; transition: none;
+    }
+    .focus-card .icon, .plate-icon, .profile-img, .btn-primary, .eyebrow .tag, .eyebrow::after,
+    .dot-live, .accent-dot {
+      animation: none !important;
+    }
+  }
+
+  /* Project Detail Page */
+  .project-detail-desc { font-size: 0.98rem; max-width: 70ch; }
+
+  .info-table { width: 100%; border-collapse: collapse; margin-top: 0.9rem; font-size: 0.92rem; }
+  .info-table th, .info-table td { text-align: left; padding: 0.7rem 0.9rem; border: 1px solid var(--border); }
+  .info-table th { background: var(--bg-panel); font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; color: var(--text-faint); font-weight: 500; text-transform: uppercase; }
+  .info-table td { color: var(--text); }
+  .info-table tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+
+  footer { text-align: center; padding: 2.2rem 0; color: var(--text-faint); font-family: var(--font-mono); font-size: 0.78rem; }
+
+  /* Sticky Bottom Contact Bar */
+  .bottom-contact-bar {
+    position: fixed; bottom: 0; left: 0; width: 100%; z-index: 290;
+    background: rgba(14, 28, 48, 0.95); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-strong); padding: 0.75rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+  }
+  .bottom-contact-text { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); display: flex; align-items: center; gap: 0.6rem; }
+  .bottom-contact-text .dot-live { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulse 2.4s ease-in-out infinite; }
+
+  .overlay { position: fixed; inset: 0; background: rgba(4, 9, 18, 0.8); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .sheet {
+    position: relative; width: 100%; max-width: 620px; max-height: 85vh; overflow-y: auto;
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px), var(--bg-panel-2);
+    background-size: 24px 24px, 24px 24px, auto;
+    border: 1px solid var(--border-strong); border-top: 3px solid var(--accent);
+    border-radius: var(--radius); padding: 1.8rem 1.9rem 2rem; transform: translateY(14px) scale(0.98); transition: transform 0.22s ease;
+  }
+  .overlay.open .sheet { transform: translateY(0) scale(1); }
+  .sheet::before, .sheet::after { content: ""; position: absolute; width: 18px; height: 18px; border: 2px solid var(--border-strong); }
+  .sheet::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .sheet::after { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+  .sheet-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.3rem; padding-bottom: 1rem; border-bottom: 1px dashed var(--border-strong); }
+  .sheet-head .part-no { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--copper); display: block; margin-bottom: 0.35rem; }
+  .sheet-head h3 { margin: 0; font-size: 1.35rem; }
+  .sheet-close { flex-shrink: 0; width: 34px; height: 34px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text-muted); border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; transition: all 0.18s; }
+  .sheet-close:hover { color: var(--accent); border-color: var(--accent); }
+  .sheet-blurb { margin: 1rem 0 1.3rem; font-size: 0.92rem; color: var(--text-muted); }
+  .sheet-section-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--text-faint); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .sheet .tag-list li { background: var(--bg-panel); }
+  .waveform { display: block; margin-top: 1.5rem; opacity: 0.6; }
+  .waveform path { stroke: var(--accent); }
+
+  .cv-header-actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+  .cv-block { margin-bottom: 1.6rem; }
+  .cv-block .role-title { color: var(--text); font-weight: 600; }
+  .cv-block .sub { color: var(--text-faint); font-size: 0.85rem; font-family: var(--font-mono); }
+
+  .back-to-top {
+    position: fixed; right: 1.4rem; bottom: 5rem; z-index: 250; width: 44px; height: 44px; border-radius: 50%;
+    background: var(--bg-panel); border: 1px solid var(--border-strong); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    opacity: 0; pointer-events: none; transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.2s;
+  }
+  .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { border-color: var(--accent); box-shadow: 0 0 16px -4px var(--accent); }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    .hero { min-height: auto; padding-top: 3rem; }
+    .hero-stats { gap: 2rem; }
+    .eyebrow h2 { font-size: 1.2rem; }
+    .nav-links { gap: 0.9rem; font-size: 0.8rem; }
+    section { padding: 2.4rem 0; }
+    .bottom-contact-bar { padding: 0.6rem 1rem; }
+    .bottom-contact-text { font-size: 0.74rem; }
+  }
+</style>
+</head>
+<body>
+
+  <canvas id="network-canvas"></canvas>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#top" class="nav-brand" onclick="switchPage('main')">Shakib<span class="accent-dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about" onclick="switchPage('main')">About</a></li>
+        <li><a href="#skills" onclick="switchPage('main')">Skills</a></li>
+        <li><a href="#portfolio" onclick="navigateProjects(event)">Projects &amp; Tasks</a></li>
+        <li><a href="#publications" onclick="switchPage('main')">Publications</a></li>
+        <li><a href="#cv" id="nav-cv-link" onclick="switchPage('cv')">CV</a></li>
+        <li><a href="#contact" id="nav-contact-link" onclick="switchPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN LANDING PAGE VIEW -->
+  <div id="main-page" class="page-view active-page">
+    <section class="hero" id="top">
+      <div class="hero-content">
+        <div class="chip-frame">
+          <svg class="leads" viewBox="0 0 211 211">
+            <line x1="0" y1="52" x2="18" y2="52"></line>
+            <line x1="0" y1="105" x2="18" y2="105"></line>
+            <line x1="0" y1="158" x2="18" y2="158"></line>
+            <line x1="211" y1="52" x2="193" y2="52"></line>
+            <line x1="211" y1="105" x2="193" y2="105"></line>
+            <line x1="211" y1="158" x2="193" y2="158"></line>
+            <circle cx="4" cy="52" r="3.5"></circle>
+            <circle cx="4" cy="105" r="3.5"></circle>
+            <circle cx="4" cy="158" r="3.5"></circle>
+            <circle cx="207" cy="52" r="3.5"></circle>
+            <circle cx="207" cy="105" r="3.5"></circle>
+            <circle cx="207" cy="158" r="3.5"></circle>
+          </svg>
+          <img src="profile.jpg" alt="Md. Najmus Shakib" class="profile-img">
+          <span class="status-badge"><i class="fa-solid fa-bolt"></i></span>
+        </div>
+
+        <span class="pill-badge"><span class="dot"></span> Electrical &amp; Electronic Engineering</span>
+
+        <h1>Md. Najmus Shakib</h1>
+        <div class="type-role" id="type-role" aria-hidden="true"></div>
+
+        <p class="hero-tagline">
+          An EEE student building embedded systems and IoT projects &mdash; turning circuits and code into working prototypes through hands-on hardware and firmware development.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn btn-primary" onclick="navigateProjects(event)">Explore Projects <i class="fa-solid fa-arrow-right"></i></a>
+          
+          <div class="social-icons-bar">
+            <a href="mailto:nshakib22ruet@gmail.com" class="icon-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/nshakib22ruet" target="_blank" class="icon-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank" class="icon-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+
+          <a href="#cv" class="btn btn-outline" onclick="switchPage('cv')"><i class="fa-solid fa-file-lines"></i> View CV</a>
+        </div>
+
+        <div class="hero-stats">
+          <div><div class="stat-value">RUET</div><div class="stat-label">University</div></div>
+          <div><div class="stat-value">EEE</div><div class="stat-label">Discipline</div></div>
+          <div><div class="stat-value">3rd Yr</div><div class="stat-label">Standing</div></div>
+        </div>
+
+        <a href="#about" class="scroll-cue">Scroll to explore <i class="fa-solid fa-arrow-down"></i></a>
+      </div>
+    </section>
+
+    <div class="container">
+
+      <!-- DYNAMIC & CENTER-ORIENTED ABOUT ME SECTION -->
+      <section id="about" class="reveal">
+        <div class="about-centered">
+          <div class="eyebrow"><span class="tag">&sect;01</span><h2>About Me</h2></div>
+          
+          <p class="about-bio-lead">
+            Hi, I'm <strong>Md. Najmus Shakib</strong> &mdash; an undergraduate Electrical and Electronic Engineering student at Rajshahi University of Engineering & Technology (RUET).
+          </p>
+          <p class="about-bio-body">
+            I am driven by a passion for converting raw circuit logic and mathematical equations into responsive, intelligent physical devices. My primary work focuses on Embedded Systems, Internet of Things (IoT), and Signal Processing, engineering reliable prototypes from low-level C firmware to interactive software dashboards.
+          </p>
+
+          <h3>Core Pillars</h3>
+          <div class="focus-grid-centered">
+            <div class="focus-card">
+              <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+              <h4>Embedded Systems</h4>
+              <p>Custom firmware architecture and sensor design using ESP32 &amp; Arduino microcontrollers.</p>
+            </div>
+            <div class="focus-card">
+              <div class="icon"><i class="fa-solid fa-wifi"></i></div>
+              <h4>IoT &amp; Telemetry</h4>
+              <p>Wireless data sync (BLE, MQTT, Wi-Fi) connecting hardware directly to cloud services.</p>
+            </div>
+            <div class="focus-card">
+              <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+              <h4>Applied Data &amp; ML</h4>
+              <p>Implementing mathematical prediction models directly onto embedded hardware.</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <h3>Research Interests</h3>
+            <ul class="tag-list">
+              <li>Embedded Systems</li>
+              <li>Internet of Things (IoT)</li>
+              <li>Machine Learning</li>
+              <li>Signal Processing</li>
+              <li>Communication Systems</li>
+              <li>Biomedical Engineering</li>
+            </ul>
+          </div>
+
+          <div class="career-box-centered">
+            <h4 style="margin: 0 0 0.5rem; font-family: var(--font-display); color: var(--accent);">Engineering Goal</h4>
+            <p style="margin: 0; font-size: 0.92rem;">To continuously innovate across hardware and software domain boundaries, creating dependable real-world systems for industrial and environmental applications.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="reveal">
+        <div class="eyebrow"><span class="tag">&sect;02</span><h2>Technical Skills</h2></div>
+        <p style="margin-bottom: 1.6rem; text-align: center;">Click any category card below to view the detailed datasheet.</p>
+        <div class="plates-grid" id="plates-grid"></div>
+        <h3>Languages</h3>
+        <table class="info-table" style="max-width: 480px; margin: 0 auto;">
+          <thead><tr><th>Language</th><th>Proficiency</th></tr></thead>
+          <tbody>
+            <tr><td>Bengali</td><td>Native</td></tr>
+            <tr><td>English</td><td>Good (reading, writing &amp; technical communication)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PROJECT-DRIVEN PORTFOLIO SECTION -->
+      <section id="portfolio" class="reveal">
+        <div class="eyebrow"><span class="tag">&sect;03</span><h2>Projects &amp; Tasks</h2></div>
+        <p style="text-align: center; margin-bottom: 1.8rem;">Select a project below to open its full write-up, wiring notes, and source code.</p>
+
+        <div class="project-slides" id="project-slides"></div>
+      </section>
+
+      <section id="publications" class="reveal">
+        <div class="eyebrow"><span class="tag">&sect;04</span><h2>Publications</h2></div>
+        <p style="text-align: center;">No publications yet. Actively researching and developing academic projects targeting embedded systems and IoT domains.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- SEPARATE CV PAGE VIEW -->
+  <div id="cv-page" class="page-view">
+    <div class="container" style="padding-top: 3rem;">
+      <section id="cv" style="border-bottom: none;">
+        <div class="cv-header-actions">
+          <div class="eyebrow" style="margin-bottom:0;"><span class="tag">&sect;05</span><h2>Curriculum Vitae</h2></div>
+          <a href="MdNajmusShakib_CV.pdf" download="MdNajmusShakib_CV.pdf" class="btn btn-primary">
+            <i class="fa-solid fa-file-pdf"></i> Download CV (PDF)
+          </a>
+        </div>
+
+        <h3>Personal Information</h3>
+        <table class="info-table">
+          <tbody>
+            <tr><th>Full Name</th><td>Md. Najmus Shakib</td></tr>
+            <tr><th>Date of Birth</th><td>02 August 2004</td></tr>
+            <tr><th>Nationality</th><td>Bangladeshi</td></tr>
+            <tr><th>Email</th><td><a href="mailto:nshakib22ruet@gmail.com">nshakib22ruet@gmail.com</a></td></tr>
+            <tr><th>Phone</th><td>+880 1770-222637</td></tr>
+            <tr><th>GitHub</th><td><a href="https://github.com/nshakib22ruet" target="_blank">github.com/nshakib22ruet</a></td></tr>
+            <tr><th>LinkedIn</th><td><a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank">linkedin.com/in/md-najmus-shakib-4064102bb</a></td></tr>
+          </tbody>
+        </table>
+        <h3>Career Objective</h3>
+        <p>Motivated undergraduate EEE student with a strong interest in embedded systems, IoT, machine learning, and signal processing. Passionate about developing intelligent engineering solutions through hardware and software integration.</p>
+        <h3>Education</h3>
+        <div class="cv-block">
+          <div class="role-title">Bachelor of Science in Engineering (B.Sc. Eng.)</div>
+          <div class="sub">EEE &middot; RUET &middot; Session 2022&ndash;2023 &middot; 3rd Year &middot; Expected Graduation: December 2027</div>
+        </div>
+        <div class="cv-block">
+          <div class="role-title">Higher Secondary Certificate (HSC)</div>
+          <div class="sub">Rangpur Government College &middot; Science &middot; 2022 &middot; GPA 5.00</div>
+        </div>
+        <div class="cv-block">
+          <div class="role-title">Secondary School Certificate (SSC)</div>
+          <div class="sub">Bir Uttam Shaheed Samad School &amp; College &middot; Science &middot; 2020 &middot; GPA 5.00</div>
+        </div>
+        <h3>Address Details</h3>
+        <p><strong style="color: var(--text);">Present Address:</strong> Kazla, Rajshahi-6204, Bangladesh</p>
+        <p><strong style="color: var(--text);">Permanent Address:</strong> Village: Parbotipur, Post Office: Uposhohor, Upazila: Rangpur Sadar, District: Rangpur-5401, Bangladesh</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- SEPARATE CONTACT PAGE VIEW -->
+<div id="contact-page" class="page-view">
+  <div class="container" style="padding-top: 3rem;">
+    <section id="contact" style="border-bottom: none;">
+      <div class="eyebrow"><span class="tag">&sect;06</span><h2>Contact Me</h2></div>
+      <p style="text-align: center;">Open to research, engineering projects, internships, and professional collaboration.</p>
+      <table class="info-table" style="max-width: 700px; margin: 1.5rem auto 0;">
+        <thead><tr><th>Channel</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td>Email</td><td><a href="mailto:nshakib22ruet@gmail.com">nshakib22ruet@gmail.com</a></td></tr>
+          <tr><td>Phone</td><td><a href="tel:+8801770222637">+880 1770-222637</a></td></tr>
+          <tr><td>GitHub</td><td><a href="https://github.com/nshakib22ruet" target="_blank">github.com/nshakib22ruet</a></td></tr>
+          <tr><td>LinkedIn</td><td><a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank">linkedin.com/in/md-najmus-shakib-4064102bb</a></td></tr>
+          <tr><td>Current Location</td><td>Rajshahi, Bangladesh</td></tr>
+          <tr><td>Permanent Address</td><td>Rangpur Sadar, Rangpur 5401, Bangladesh</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
+
+  <!-- SEPARATE PROJECT DETAIL PAGE VIEW -->
+  <div id="project-page" class="page-view">
+    <div class="container" style="padding-top: 3rem;">
+      <section id="project-detail" style="border-bottom: none;">
+        <button class="btn btn-ghost" onclick="switchPage('main'); scrollToPortfolio();" style="margin-bottom: 1.6rem;">
+          <i class="fa-solid fa-arrow-left"></i> Back to Projects
+        </button>
+        <span class="project-badge" id="proj-badge"></span>
+        <h2 id="proj-title" style="margin: 0.4rem 0 1.1rem;"></h2>
+        <p class="project-detail-desc" id="proj-desc"></p>
+        <ul class="tag-list" id="proj-tags" style="justify-content: flex-start; margin: 1.3rem 0 1.7rem;"></ul>
+        <a id="proj-github" href="#" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View GitHub Repository</a>
+      </section>
+    </div>
+  </div>
+
+  <div class="container">
+    <footer>&copy; 2026 Md. Najmus Shakib &middot; Hosted on GitHub Pages</footer>
+  </div>
+
+  <!-- STICKY BOTTOM CONTACT BAR -->
+  <div class="bottom-contact-bar">
+    <div class="bottom-contact-text">
+      <span class="dot-live"></span>
+      <span>Available for research, internships &amp; engineering projects</span>
+    </div>
+    <button onclick="switchPage('contact')" class="btn btn-primary" style="padding: 0.45rem 0.95rem; font-size: 0.78rem;">
+      Contact Me <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <div class="overlay" id="overlay">
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <div class="sheet-head">
+        <div>
+          <span class="part-no" id="sheet-part"></span>
+          <h3 id="sheet-title"></h3>
+        </div>
+        <button class="sheet-close" id="sheet-close" aria-label="Close datasheet"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p class="sheet-blurb" id="sheet-blurb"></p>
+      <div class="sheet-section-label">Full item list</div>
+      <ul class="tag-list" id="sheet-items"></ul>
+      <svg class="waveform" viewBox="0 0 560 40" width="100%" height="40">
+        <path d="M0 20 L40 20 L55 4 L70 36 L85 20 L120 20 L135 8 L150 32 L165 20 L560 20" fill="none" stroke-width="1.6"></path>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    function switchPage(page) {
+      document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active-page'));
+      document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+
+      if (page === 'cv') {
+        document.getElementById('cv-page').classList.add('active-page');
+        document.getElementById('nav-cv-link').classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (page === 'contact') {
+        document.getElementById('contact-page').classList.add('active-page');
+        document.getElementById('nav-contact-link').classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (page === 'project') {
+        document.getElementById('project-page').classList.add('active-page');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        document.getElementById('main-page').classList.add('active-page');
+      }
+    }
+
+    function scrollToPortfolio() {
+      setTimeout(() => {
+        const el = document.getElementById('portfolio');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 60);
+    }
+
+    // Add future projects here, in order — each becomes one horizontal slide.
+    const projectsData = [
+      { id: "P1", badge: "IoT / Machine Learning",
+        title: "ESP32 IoT Weather & Flood Monitoring System",
+        description: "An intelligent environmental tracking system utilizing ESP32 with Bluetooth Low Energy (BLE), an SH1106 OLED interface, and an embedded quadratic regression model for real-time flood risk prediction.",
+        tags: ["ESP32", "BLE", "Regression Model", "Embedded C"],
+        github: "https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System" }
+    ];
+
+    const slidesWrap = document.getElementById("project-slides");
+    projectsData.forEach((p, i) => {
+      const slide = document.createElement("div");
+      slide.className = "project-slide";
+      slide.tabIndex = 0;
+      slide.setAttribute("role", "button");
+      slide.setAttribute("aria-label", `Open project: ${p.title}`);
+      slide.innerHTML = `
+        <span class="slide-serial">P${String(i + 1).padStart(2, "0")}</span>
+        <span class="slide-name">${p.title}</span>
+        <span class="slide-badge">${p.badge}</span>
+        <span class="slide-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+      `;
+      slide.addEventListener("click", () => openProject(i));
+      slide.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject(i); }
+      });
+      slidesWrap.appendChild(slide);
+    });
+
+    function openProject(index) {
+      const p = projectsData[index];
+      document.getElementById("proj-badge").textContent = p.badge;
+      document.getElementById("proj-title").textContent = p.title;
+      document.getElementById("proj-desc").textContent = p.description;
+      document.getElementById("proj-tags").innerHTML = p.tags.map(t => `<li>${t}</li>`).join("");
+      document.getElementById("proj-github").href = p.github;
+      switchPage("project");
+    }
+
+    function navigateProjects(e) {
+      if (e) e.preventDefault();
+      if (projectsData.length === 1) {
+        openProject(0);
+      } else {
+        switchPage("main");
+        scrollToPortfolio();
+      }
+    }
+
+    const skillsData = [
+      { id: "U1", icon: "fa-solid fa-code", title: "Programming Languages",
+        blurb: "Core languages used across firmware development, control-system modeling, and data analysis.",
+        items: ["C", "C++", "Python", "MATLAB"] },
+      { id: "U2", icon: "fa-solid fa-microchip", title: "Embedded Systems & IoT",
+        blurb: "Firmware and connectivity skills behind ESP32-based sensor systems and wireless dashboards.",
+        items: ["ESP32", "Arduino", "Bluetooth Low Energy (BLE)", "Sensor Interfacing", "Embedded C"] },
+      { id: "U3", icon: "fa-solid fa-chart-line", title: "Machine Learning & Data Analysis",
+        blurb: "Applied modeling techniques used for prediction and analysis in sensor-driven projects.",
+        items: ["Machine Learning Fundamentals", "Quadratic Regression", "Data Analysis", "NumPy", "Pandas", "Matplotlib"] },
+      { id: "U4", icon: "fa-solid fa-screwdriver-wrench", title: "Software & Development Tools",
+        blurb: "Day-to-day toolchain for writing, simulating, and versioning firmware and analysis code.",
+        items: ["Arduino IDE", "Visual Studio Code", "Git", "GitHub", "Proteus Design Suite", "MATLAB", "Wokwi Simulator"] },
+      { id: "U5", icon: "fa-solid fa-bolt", title: "Hardware Experience",
+        blurb: "Boards and modules used hands-on across embedded and control-system builds.",
+        items: ["ESP32 Development Board", "Arduino Uno", "DHT11 Temp & Humidity Sensor", "HC-SR04 Ultrasonic Sensor", "SH1106 OLED Display", "Rain Sensor Module", "L298N Motor Driver"] },
+      { id: "U6", icon: "fa-solid fa-diagram-project", title: "Design & Simulation",
+        blurb: "Tools used for circuit layout and pre-build validation before hardware assembly.",
+        items: ["PCB Design", "Circuit Simulation", "Proteus Design Suite", "Tinkercad"] }
+    ];
+
+    const grid = document.getElementById("plates-grid");
+    skillsData.forEach((cat, i) => {
+      const card = document.createElement("button");
+      card.className = "plate-card";
+      card.type = "button";
+      card.setAttribute("data-index", i);
+      card.innerHTML = `
+        <div class="plate-top">
+          <span class="plate-icon" style="animation-delay:${(i * 0.22).toFixed(2)}s"><i class="${cat.icon}"></i></span>
+          <span class="plate-count">${cat.id} &middot; ${cat.items.length} ITEMS</span>
+        </div>
+        <h4>${cat.title}</h4>
+        <p class="plate-preview">${cat.items.slice(0, 3).join(" &middot; ")}${cat.items.length > 3 ? " &middot; &hellip;" : ""}</p>
+        <span class="plate-cta">VIEW DATASHEET <i class="fa-solid fa-arrow-right"></i></span>
+      `;
+      grid.appendChild(card);
+    });
+
+    const overlay = document.getElementById("overlay");
+    const sheetPart = document.getElementById("sheet-part");
+    const sheetTitle = document.getElementById("sheet-title");
+    const sheetBlurb = document.getElementById("sheet-blurb");
+    const sheetItems = document.getElementById("sheet-items");
+    const closeBtn = document.getElementById("sheet-close");
+    let lastFocused = null;
+
+    function openSheet(index) {
+      const cat = skillsData[index];
+      sheetPart.textContent = `DATASHEET // ${cat.id}`;
+      sheetTitle.textContent = cat.title;
+      sheetBlurb.textContent = cat.blurb;
+      sheetItems.innerHTML = cat.items.map(item => `<li>${item}</li>`).join("");
+      lastFocused = document.activeElement;
+      overlay.classList.add("open");
+      closeBtn.focus();
+      document.body.style.overflow = "hidden";
+    }
+    function closeSheet() {
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+      if (lastFocused) lastFocused.focus();
+    }
+    grid.addEventListener("click", (e) => {
+      const card = e.target.closest(".plate-card");
+      if (card) openSheet(Number(card.getAttribute("data-index")));
+    });
+    closeBtn.addEventListener("click", closeSheet);
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) closeSheet(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && overlay.classList.contains("open")) closeSheet();
+    });
+
+    const roles = ["Embedded Systems Builder", "IoT Developer", "EEE Student @ RUET", "Firmware Tinkerer"];
+    const typeEl = document.getElementById("type-role");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      typeEl.textContent = roles[0];
+    } else {
+      let roleIndex = 0, charIndex = 0, deleting = false;
+      function tick() {
+        const current = roles[roleIndex];
+        if (!deleting) {
+          charIndex++;
+          if (charIndex > current.length) { deleting = true; setTimeout(tick, 1400); return; }
+        } else {
+          charIndex--;
+          if (charIndex < 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; charIndex = 0; }
+        }
+        typeEl.innerHTML = current.slice(0, charIndex) + '<span class="cursor">&nbsp;</span>';
+        setTimeout(tick, deleting ? 35 : 65);
+      }
+      tick();
+    }
+
+    const revealEls = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add("in-view"));
+    }
+
+    const backToTop = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("show", window.scrollY > 500);
+    });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    (function () {
+      const canvas = document.getElementById("network-canvas");
+      const ctx = canvas.getContext("2d");
+      let w, h, particles;
+
+      function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+
+      function initParticles() {
+        const count = Math.min(70, Math.floor((w * h) / 16000));
+        particles = Array.from({ length: count }, () => ({
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35
+        }));
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        });
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 130) {
+              ctx.strokeStyle = `rgba(67,205,251,${(1 - dist / 130) * 0.35})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+        particles.forEach(p => {
+          ctx.fillStyle = "rgba(110,231,255,0.8)";
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        if (!reduceMotion) requestAnimationFrame(step);
+      }
+
+      resize();
+      initParticles();
+      if (!reduceMotion) { requestAnimationFrame(step); } else { step(); }
+      window.addEventListener("resize", () => { resize(); initParticles(); });
+    })();
+  </script>
+
+</body>
+</html>
