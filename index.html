@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Md. Najmus Shakib | Developer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #1e293b;
+      --accent-color: #2563eb;
+      --card-bg: #f8fafc;
+      --border-color: #e2e8f0;
+      --subtext-color: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(5px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 950px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--subtext-color);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Layout Container */
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* Header Profile */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-color);
+      flex-shrink: 0;
+    }
+
+    .header-info h1 {
+      margin: 0 0 0.4rem 0;
+      font-size: 2.2rem;
+    }
+
+    .header-info p {
+      margin: 0.2rem 0;
+      color: var(--subtext-color);
+    }
+
+    .social-links {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .social-links a {
+      color: var(--accent-color);
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Sections */
+    section {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      color: var(--text-color);
+      border-bottom: 2px solid var(--accent-color);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Lists & Tags */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.2rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tag-list li {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* Tables */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .info-table th, .info-table td {
+      text-align: left;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .info-table th {
+      background-color: var(--card-bg);
+    }
+
+    /* Project Card */
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 0.8rem;
+    }
+
+    .btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--subtext-color);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav-links {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+      }
+      .social-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="nav-brand">Md. Najmus Shakib</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    
+    <!-- Profile Header -->
+    <header id="about">
+      <img src="profile.jpg" alt="Md. Najmus Shakib" class="profile-img">
+      <div class="header-info">
+        <h1>Md. Najmus Shakib 👋</h1>
+        <p><strong>Undergraduate EEE Student at RUET</strong></p>
+        <p>Embedded Systems | IoT | Machine Learning | Signal Processing | Communication Systems | Biomedical Engineering</p>
+        <p><i class="fa-solid fa-location-dot"></i> Rajshahi, Bangladesh</p>
+        
+        <div class="social-links">
+          <a href="https://github.com/nshakib22ruet" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="mailto:nshakib22ruet@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- About & Research Section -->
+    <section>
+      <h2>About Me</h2>
+      <p>
+        Hi, I’m Md. Najmus Shakib 👋. I am an undergraduate Electrical and Electronic Engineering (EEE) student at Rajshahi University of Engineering & Technology (RUET), Bangladesh.
+      </p>
+      <p>
+        My interests include Embedded Systems, Internet of Things (IoT), Machine Learning, Signal Processing, Communication Systems, and Biomedical Engineering. I enjoy building practical engineering projects that combine hardware and software to solve real-world problems.
+      </p>
+      <p>
+        I have experience with ESP32, Arduino, C, C++, Python, MATLAB, and GitHub. I am continuously learning new technologies and improving my engineering and research skills.
+      </p>
+
+      <h3>Research Interests</h3>
+      <ul class="tag-list">
+        <li>Embedded Systems</li>
+        <li>Internet of Things (IoT)</li>
+        <li>Machine Learning</li>
+        <li>Signal Processing</li>
+        <li>Communication Systems</li>
+        <li>Biomedical Engineering</li>
+      </ul>
+
+      <h3>Career Goal</h3>
+      <p>My goal is to become a skilled engineer and researcher, contributing to innovative solutions in embedded systems, intelligent systems, and communication technologies.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <p>Welcome to my technical skills page. I am continuously expanding my knowledge in embedded systems, IoT, machine learning, and software development through academic projects and self-learning.</p>
+      
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>💻 Programming Languages</h3>
+          <ul class="tag-list">
+            <li>C</li>
+            <li>C++</li>
+            <li>Python</li>
+            <li>MATLAB</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>🔌 Embedded Systems & IoT</h3>
+          <ul class="tag-list">
+            <li>ESP32</li>
+            <li>Arduino</li>
+            <li>Bluetooth Low Energy (BLE)</li>
+            <li>Sensor Interfacing</li>
+            <li>Embedded C</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>🤖 Machine Learning & Data Analysis</h3>
+          <ul class="tag-list">
+            <li>Machine Learning Fundamentals</li>
+            <li>Quadratic Regression</li>
+            <li>Data Analysis</li>
+            <li>NumPy</li>
+            <li>Pandas</li>
+            <li>Matplotlib</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>🛠 Software & Development Tools</h3>
+          <ul class="tag-list">
+            <li>Arduino IDE</li>
+            <li>Visual Studio Code</li>
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Proteus Design Suite</li>
+            <li>MATLAB</li>
+            <li>Wokwi Simulator</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>⚡ Hardware Experience</h3>
+          <ul class="tag-list">
+            <li>ESP32 Development Board</li>
+            <li>Arduino Uno</li>
+            <li>DHT11 Temp & Humidity Sensor</li>
+            <li>HC-SR04 Ultrasonic Sensor</li>
+            <li>SH1106 OLED Display</li>
+            <li>Rain Sensor Module</li>
+            <li>L298N Motor Driver</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>🖥️ Design & Simulation</h3>
+          <ul class="tag-list">
+            <li>PCB Design</li>
+            <li>Circuit Simulation</li>
+            <li>Proteus Design Suite</li>
+            <li>Tinkercad</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 1.5rem;">🌍 Languages</h3>
+      <table class="info-table" style="max-width: 500px;">
+        <thead>
+          <tr>
+            <th>Language</th>
+            <th>Proficiency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bengali</td>
+            <td>Native</td>
+          </tr>
+          <tr>
+            <td>English</td>
+            <td>Good (Reading, Writing & Technical Communication)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <div class="project-card">
+        <h3>ESP32 IoT Weather & Flood Monitoring System</h3>
+        <p>An ESP32-based IoT system for real-time weather monitoring and flood prediction using Machine Learning. Developed for monitoring temperature, humidity, rainfall, and water level. Integrates Bluetooth Low Energy (BLE), an SH1106 OLED display, and a Quadratic Regression machine learning model for environmental prediction and flood-risk monitoring.</p>
+        <a href="https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System" target="_blank" class="btn"><i class="fa-brands fa-github"></i> Project-1-ESP32-Weather-Flood-Monitoring-System</a>
+      </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+      <h2>Publications</h2>
+      <p>I do not have any publications at this time.</p>
+      <p>I am actively working on academic projects and intend to publish research articles in the future, particularly in the areas of:</p>
+      <ul class="tag-list">
+        <li>Embedded Systems</li>
+        <li>Internet of Things (IoT)</li>
+        <li>Machine Learning</li>
+        <li>Signal Processing</li>
+        <li>Communication Systems</li>
+      </ul>
+    </section>
+
+    <!-- Curriculum Vitae Section -->
+    <section id="cv">
+      <h2>Curriculum Vitae</h2>
+      <p>📄 Download PDF Version (Coming Soon)</p>
+
+      <h3>Personal Information</h3>
+      <table class="info-table">
+        <tbody>
+          <tr>
+            <th>Full Name</th>
+            <td>Md. Najmus Shakib</td>
+          </tr>
+          <tr>
+            <th>Date of Birth</th>
+            <td>02 August 2004</td>
+          </tr>
+          <tr>
+            <th>Nationality</th>
+            <td>Bangladeshi</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><a href="mailto:nshakib22ruet@gmail.com">nshakib22ruet@gmail.com</a></td>
+          </tr>
+          <tr>
+            <th>Phone</th>
+            <td>+880 1770-222637</td>
+          </tr>
+          <tr>
+            <th>GitHub</th>
+            <td><a href="https://github.com/nshakib22ruet" target="_blank">github.com/nshakib22ruet</a></td>
+          </tr>
+          <tr>
+            <th>LinkedIn</th>
+            <td><a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank">linkedin.com/in/md-najmus-shakib-4064102bb</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Career Objective</h3>
+      <p>Motivated undergraduate Electrical and Electronic Engineering student with a strong interest in Embedded Systems, Internet of Things (IoT), Machine Learning, and Signal Processing. Passionate about developing intelligent engineering solutions through hardware and software integration. Seeking opportunities to contribute to research, innovation, and real-world engineering projects while continuously enhancing my technical expertise.</p>
+
+      <h3>Education</h3>
+      <p><strong>Bachelor of Science in Engineering (B.Sc. Eng.)</strong><br>
+      Department: Electrical & Electronic Engineering (EEE)<br>
+      University: Rajshahi University of Engineering & Technology (RUET)<br>
+      Session: 2022–2023 | Current Year: 3rd Year | Expected Graduation: December 2027</p>
+
+      <p><strong>Higher Secondary Certificate (HSC)</strong><br>
+      Institution: Rangpur Government College<br>
+      Group: Science | Passing Year: 2022 | Result: GPA 5.00</p>
+
+      <p><strong>Secondary School Certificate (SSC)</strong><br>
+      Institution: Bir Uttam Shaheed Samad School & College<br>
+      Group: Science | Passing Year: 2020 | Result: GPA 5.00</p>
+
+      <h3>Address Details</h3>
+      <p><strong>Present Address:</strong> Kazla, Rajshahi-6204, Bangladesh</p>
+      <p><strong>Permanent Address:</strong> Village: Parbotipur, Post Office: Uposhohor, Upazila: Rangpur Sadar, District: Rangpur-5401, Bangladesh</p>
+
+      <h3>References</h3>
+      <p>Available upon request.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Information</h2>
+      <p>Thank you for visiting my portfolio. I welcome opportunities for research, engineering projects, internships, and professional collaboration.</p>
+
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>Contact</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>📧 Email</td>
+            <td><a href="mailto:nshakib22ruet@gmail.com">nshakib22ruet@gmail.com</a></td>
+          </tr>
+          <tr>
+            <td>💻 GitHub</td>
+            <td><a href="https://github.com/nshakib22ruet" target="_blank">github.com/nshakib22ruet</a></td>
+          </tr>
+          <tr>
+            <td>💼 LinkedIn</td>
+            <td><a href="https://linkedin.com/in/md-najmus-shakib-4064102bb" target="_blank">linkedin.com/in/md-najmus-shakib-4064102bb</a></td>
+          </tr>
+          <tr>
+            <td>📍 Current Location</td>
+            <td>Rajshahi, Bangladesh</td>
+          </tr>
+          <tr>
+            <td>🏠 Permanent Address</td>
+            <td>Rangpur Sadar, Rangpur 5401, Bangladesh</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Md. Najmus Shakib. Hosted on GitHub Pages.</p>
+    </footer>
+  </div>
+
+</body>
+</html>
