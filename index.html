@@ -45,6 +45,33 @@
   ::selection { background: var(--accent-soft); color: var(--accent); }
   a { color: inherit; }
 
+  /* Ambient drifting glow, fixed behind the whole page for a lively feel top to bottom */
+  body::before, body::after {
+    content: ""; position: fixed; z-index: -3; border-radius: 50%;
+    filter: blur(100px); pointer-events: none; opacity: 0.28; will-change: transform;
+  }
+  body::before {
+    width: 46vw; height: 46vw; max-width: 560px; max-height: 560px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    top: -14vw; left: -12vw; animation: driftGlowA 24s ease-in-out infinite;
+  }
+  body::after {
+    width: 42vw; height: 42vw; max-width: 520px; max-height: 520px;
+    background: radial-gradient(circle, var(--copper) 0%, transparent 70%);
+    bottom: -12vw; right: -10vw; animation: driftGlowB 28s ease-in-out infinite;
+  }
+  @keyframes driftGlowA {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(8vw, 6vw) scale(1.15); }
+  }
+  @keyframes driftGlowB {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-7vw, -5vw) scale(1.1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    body::before, body::after { animation: none; }
+  }
+
   nav {
     position: sticky; top: 0; z-index: 300;
     background: rgba(6, 13, 24, 0.86);
@@ -60,7 +87,7 @@
     letter-spacing: -0.01em; color: var(--text); text-decoration: none;
     display: flex; align-items: center; gap: 0.4rem; white-space: nowrap;
   }
-  .nav-brand .accent-dot { color: var(--accent); }
+  .nav-brand .accent-dot { color: var(--accent); display: inline-block; animation: pulse 2.4s ease-in-out infinite; }
   .nav-links { display: flex; gap: 1.4rem; list-style: none; margin: 0; padding: 0; overflow-x: auto; }
   .nav-links a {
     text-decoration: none; color: var(--text-muted); font-size: 0.86rem; font-weight: 500;
@@ -74,9 +101,9 @@
     position: relative; min-height: 90vh; display: flex; flex-direction: column;
     align-items: center; justify-content: center; text-align: center;
     padding: 4rem 1.5rem 3rem; overflow: hidden;
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, #0d2038 0%, var(--bg) 65%);
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13, 32, 56, 0.78) 0%, rgba(6, 13, 24, 0.35) 65%);
   }
-  #network-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.55; }
+  #network-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -2; opacity: 0.4; pointer-events: none; }
   .hero-content { position: relative; z-index: 1; max-width: 720px; }
 
   .chip-frame { position: relative; width: 175px; height: 175px; margin: 0 auto 1.6rem; }
@@ -88,6 +115,11 @@
     object-fit: cover; border: 2px solid var(--accent);
     box-shadow: 0 0 0 6px rgba(67,205,251,0.06), 0 0 40px -6px var(--accent);
     background: var(--bg-panel);
+    animation: profileGlow 3.6s ease-in-out infinite;
+  }
+  @keyframes profileGlow {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(67,205,251,0.06), 0 0 40px -6px var(--accent); }
+    50% { box-shadow: 0 0 0 11px rgba(67,205,251,0.11), 0 0 58px -4px var(--accent); }
   }
   .status-badge {
     position: absolute; bottom: 4px; left: 4px; z-index: 2;
@@ -138,8 +170,12 @@
     font-family: var(--font-mono); font-size: 0.82rem; padding: 0.65rem 1.15rem;
     border-radius: 8px; border: 1px solid var(--border-strong); transition: all 0.2s; cursor: pointer;
   }
-  .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-  .btn-primary:hover { box-shadow: 0 0 22px -4px var(--accent); transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); animation: btnPulse 2.8s ease-in-out infinite; }
+  .btn-primary:hover { box-shadow: 0 0 22px -4px var(--accent); transform: translateY(-1px); animation-play-state: paused; }
+  @keyframes btnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(67,205,251,0.3); }
+    50% { box-shadow: 0 0 16px 1px rgba(67,205,251,0.32); }
+  }
   .btn-ghost { background: rgba(255,255,255,0.02); color: var(--text); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
   .btn-outline { background: transparent; color: var(--accent); border-color: var(--accent); }
@@ -171,10 +207,19 @@
   .eyebrow .tag {
     font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--copper);
     border: 1px solid var(--copper-soft); background: var(--copper-soft); padding: 0.25rem 0.55rem;
-    border-radius: 3px; white-space: nowrap;
+    border-radius: 3px; white-space: nowrap; animation: tagGlow 3.2s ease-in-out infinite;
+  }
+  @keyframes tagGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(214,154,92,0); }
+    50% { box-shadow: 0 0 10px 1px rgba(214,154,92,0.32); }
   }
   .eyebrow h2 { margin: 0; font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; }
-  .eyebrow::after { content: ""; flex: 1; height: 1px; background: repeating-linear-gradient(90deg, var(--border-strong) 0 6px, transparent 6px 12px); }
+  .eyebrow::after {
+    content: ""; flex: 1; height: 1px; background-size: 24px 100%;
+    background-image: repeating-linear-gradient(90deg, var(--border-strong) 0 6px, transparent 6px 12px);
+    animation: dashSlide 3.2s linear infinite;
+  }
+  @keyframes dashSlide { from { background-position: 0 0; } to { background-position: 24px 0; } }
 
   /* Dynamic Centered About Me Styles */
   .about-centered {
@@ -264,6 +309,79 @@
   .project-card h3 { text-align: left; margin: 0 0 0.6rem; font-size: 1.2rem; color: var(--text); }
   .project-card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem; }
 
+  /* Project Slides (name-only, full-width, serial order) */
+  .project-slides { display: flex; flex-direction: column; gap: 1rem; }
+  .project-slide {
+    display: flex; align-items: center; gap: 1rem; width: 100%;
+    padding: 1.3rem 1.6rem; border: 1px solid var(--border); border-radius: var(--radius);
+    background: linear-gradient(160deg, #142743, #0f1e33); cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .project-slide:hover, .project-slide:focus-visible {
+    transform: translateX(4px); border-color: var(--accent);
+    box-shadow: 0 10px 26px -14px rgba(67,205,251,0.55); outline: none;
+  }
+  .project-slide .slide-serial {
+    font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em;
+    color: var(--copper); flex-shrink: 0; min-width: 34px;
+  }
+  .project-slide .slide-name {
+    flex: 1; text-align: left; font-family: var(--font-display);
+    font-weight: 600; font-size: 1.05rem; color: var(--text);
+  }
+  .project-slide .slide-badge {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em;
+    color: var(--text-faint); flex-shrink: 0; display: none;
+  }
+  @media (min-width: 640px) {
+    .project-slide .slide-badge { display: inline-block; }
+  }
+  .project-slide .slide-arrow { color: var(--accent); flex-shrink: 0; transition: transform 0.18s ease; }
+  .project-slide:hover .slide-arrow { transform: translateX(3px); }
+
+  /* Staggered entrance for grid/list items (uses `translate`, kept separate from hover `transform`) */
+  .focus-grid-centered .focus-card,
+  .plates-grid .plate-card,
+  .project-slides .project-slide {
+    opacity: 0; translate: 0 14px;
+    transition: opacity 0.5s ease, translate 0.5s ease;
+  }
+  .reveal.in-view .focus-grid-centered .focus-card,
+  .reveal.in-view .plates-grid .plate-card,
+  .reveal.in-view .project-slides .project-slide {
+    opacity: 1; translate: 0 0;
+  }
+  .focus-grid-centered .focus-card:nth-child(1), .plates-grid .plate-card:nth-child(1), .project-slides .project-slide:nth-child(1) { transition-delay: 0.05s; }
+  .focus-grid-centered .focus-card:nth-child(2), .plates-grid .plate-card:nth-child(2), .project-slides .project-slide:nth-child(2) { transition-delay: 0.15s; }
+  .focus-grid-centered .focus-card:nth-child(3), .plates-grid .plate-card:nth-child(3), .project-slides .project-slide:nth-child(3) { transition-delay: 0.25s; }
+  .plates-grid .plate-card:nth-child(4), .project-slides .project-slide:nth-child(4) { transition-delay: 0.35s; }
+  .plates-grid .plate-card:nth-child(5), .project-slides .project-slide:nth-child(5) { transition-delay: 0.45s; }
+  .plates-grid .plate-card:nth-child(6), .project-slides .project-slide:nth-child(6) { transition-delay: 0.55s; }
+
+  /* Gentle floating motion on icons */
+  @keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  .focus-card .icon, .plate-icon { animation: iconFloat 3.4s ease-in-out infinite; }
+  .focus-grid-centered .focus-card:nth-child(2) .icon { animation-delay: 0.3s; }
+  .focus-grid-centered .focus-card:nth-child(3) .icon { animation-delay: 0.6s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .focus-grid-centered .focus-card,
+    .plates-grid .plate-card,
+    .project-slides .project-slide {
+      opacity: 1; translate: 0 0; transition: none;
+    }
+    .focus-card .icon, .plate-icon, .profile-img, .btn-primary, .eyebrow .tag, .eyebrow::after,
+    .dot-live, .accent-dot {
+      animation: none !important;
+    }
+  }
+
+  /* Project Detail Page */
+  .project-detail-desc { font-size: 0.98rem; max-width: 70ch; }
+
   .info-table { width: 100%; border-collapse: collapse; margin-top: 0.9rem; font-size: 0.92rem; }
   .info-table th, .info-table td { text-align: left; padding: 0.7rem 0.9rem; border: 1px solid var(--border); }
   .info-table th { background: var(--bg-panel); font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; color: var(--text-faint); font-weight: 500; text-transform: uppercase; }
@@ -281,7 +399,7 @@
     box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
   }
   .bottom-contact-text { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); display: flex; align-items: center; gap: 0.6rem; }
-  .bottom-contact-text .dot-live { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+  .bottom-contact-text .dot-live { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulse 2.4s ease-in-out infinite; }
 
   .overlay { position: fixed; inset: 0; background: rgba(4, 9, 18, 0.8); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
   .overlay.open { opacity: 1; pointer-events: auto; }
@@ -338,13 +456,15 @@
 </head>
 <body>
 
+  <canvas id="network-canvas"></canvas>
+
   <nav>
     <div class="nav-container">
       <a href="#top" class="nav-brand" onclick="switchPage('main')">Shakib<span class="accent-dot">.</span></a>
       <ul class="nav-links">
         <li><a href="#about" onclick="switchPage('main')">About</a></li>
         <li><a href="#skills" onclick="switchPage('main')">Skills</a></li>
-        <li><a href="#portfolio" onclick="switchPage('main')">Portfolio</a></li>
+        <li><a href="#portfolio" onclick="navigateProjects(event)">Projects &amp; Tasks</a></li>
         <li><a href="#publications" onclick="switchPage('main')">Publications</a></li>
         <li><a href="#cv" id="nav-cv-link" onclick="switchPage('cv')">CV</a></li>
         <li><a href="#contact" id="nav-contact-link" onclick="switchPage('contact')">Contact</a></li>
@@ -355,7 +475,6 @@
   <!-- MAIN LANDING PAGE VIEW -->
   <div id="main-page" class="page-view active-page">
     <section class="hero" id="top">
-      <canvas id="network-canvas"></canvas>
       <div class="hero-content">
         <div class="chip-frame">
           <svg class="leads" viewBox="0 0 211 211">
@@ -386,7 +505,7 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#portfolio" class="btn btn-primary">Explore Projects <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#portfolio" class="btn btn-primary" onclick="navigateProjects(event)">Explore Projects <i class="fa-solid fa-arrow-right"></i></a>
           
           <div class="social-icons-bar">
             <a href="mailto:nshakib22ruet@gmail.com" class="icon-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
@@ -475,27 +594,10 @@
 
       <!-- PROJECT-DRIVEN PORTFOLIO SECTION -->
       <section id="portfolio" class="reveal">
-        <div class="eyebrow"><span class="tag">&sect;03</span><h2>Projects &amp; Builds</h2></div>
-        <p style="text-align: center; margin-bottom: 1.8rem;">Highlighting engineering projects with complete source control and functional firmware code.</p>
-        
-        <div class="project-grid">
-          <div class="project-card">
-            <div>
-              <span class="project-badge">IoT / Machine Learning</span>
-              <h3>ESP32 IoT Weather &amp; Flood Monitoring System</h3>
-              <p>An intelligent environmental tracking system utilizing ESP32 with Bluetooth Low Energy (BLE), an SH1106 OLED interface, and an embedded quadratic regression model for real-time flood risk prediction.</p>
-              <ul class="tag-list" style="justify-content: flex-start; margin-bottom: 1.2rem;">
-                <li>ESP32</li>
-                <li>BLE</li>
-                <li>Regression Model</li>
-                <li>Embedded C</li>
-              </ul>
-            </div>
-            <a href="https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center;"><i class="fa-brands fa-github"></i> View GitHub Repository</a>
-          </div>
+        <div class="eyebrow"><span class="tag">&sect;03</span><h2>Projects &amp; Tasks</h2></div>
+        <p style="text-align: center; margin-bottom: 1.8rem;">Select a project below to open its full write-up, wiring notes, and source code.</p>
 
-          <!-- Add future project cards seamlessly inside this grid -->
-        </div>
+        <div class="project-slides" id="project-slides"></div>
       </section>
 
       <section id="publications" class="reveal">
@@ -572,6 +674,22 @@
   </div>
 </div>
 
+  <!-- SEPARATE PROJECT DETAIL PAGE VIEW -->
+  <div id="project-page" class="page-view">
+    <div class="container" style="padding-top: 3rem;">
+      <section id="project-detail" style="border-bottom: none;">
+        <button class="btn btn-ghost" onclick="switchPage('main'); scrollToPortfolio();" style="margin-bottom: 1.6rem;">
+          <i class="fa-solid fa-arrow-left"></i> Back to Projects
+        </button>
+        <span class="project-badge" id="proj-badge"></span>
+        <h2 id="proj-title" style="margin: 0.4rem 0 1.1rem;"></h2>
+        <p class="project-detail-desc" id="proj-desc"></p>
+        <ul class="tag-list" id="proj-tags" style="justify-content: flex-start; margin: 1.3rem 0 1.7rem;"></ul>
+        <a id="proj-github" href="#" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View GitHub Repository</a>
+      </section>
+    </div>
+  </div>
+
   <div class="container">
     <footer>&copy; 2026 Md. Najmus Shakib &middot; Hosted on GitHub Pages</footer>
   </div>
@@ -620,8 +738,67 @@
         document.getElementById('contact-page').classList.add('active-page');
         document.getElementById('nav-contact-link').classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (page === 'project') {
+        document.getElementById('project-page').classList.add('active-page');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         document.getElementById('main-page').classList.add('active-page');
+      }
+    }
+
+    function scrollToPortfolio() {
+      setTimeout(() => {
+        const el = document.getElementById('portfolio');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 60);
+    }
+
+    // Add future projects here, in order — each becomes one horizontal slide.
+    const projectsData = [
+      { id: "P1", badge: "IoT / Machine Learning",
+        title: "ESP32 IoT Weather & Flood Monitoring System",
+        description: "An intelligent environmental tracking system utilizing ESP32 with Bluetooth Low Energy (BLE), an SH1106 OLED interface, and an embedded quadratic regression model for real-time flood risk prediction.",
+        tags: ["ESP32", "BLE", "Regression Model", "Embedded C"],
+        github: "https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System" }
+    ];
+
+    const slidesWrap = document.getElementById("project-slides");
+    projectsData.forEach((p, i) => {
+      const slide = document.createElement("div");
+      slide.className = "project-slide";
+      slide.tabIndex = 0;
+      slide.setAttribute("role", "button");
+      slide.setAttribute("aria-label", `Open project: ${p.title}`);
+      slide.innerHTML = `
+        <span class="slide-serial">P${String(i + 1).padStart(2, "0")}</span>
+        <span class="slide-name">${p.title}</span>
+        <span class="slide-badge">${p.badge}</span>
+        <span class="slide-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+      `;
+      slide.addEventListener("click", () => openProject(i));
+      slide.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject(i); }
+      });
+      slidesWrap.appendChild(slide);
+    });
+
+    function openProject(index) {
+      const p = projectsData[index];
+      document.getElementById("proj-badge").textContent = p.badge;
+      document.getElementById("proj-title").textContent = p.title;
+      document.getElementById("proj-desc").textContent = p.description;
+      document.getElementById("proj-tags").innerHTML = p.tags.map(t => `<li>${t}</li>`).join("");
+      document.getElementById("proj-github").href = p.github;
+      switchPage("project");
+    }
+
+    function navigateProjects(e) {
+      if (e) e.preventDefault();
+      if (projectsData.length === 1) {
+        openProject(0);
+      } else {
+        switchPage("main");
+        scrollToPortfolio();
       }
     }
 
@@ -654,7 +831,7 @@
       card.setAttribute("data-index", i);
       card.innerHTML = `
         <div class="plate-top">
-          <span class="plate-icon"><i class="${cat.icon}"></i></span>
+          <span class="plate-icon" style="animation-delay:${(i * 0.22).toFixed(2)}s"><i class="${cat.icon}"></i></span>
           <span class="plate-count">${cat.id} &middot; ${cat.items.length} ITEMS</span>
         </div>
         <h4>${cat.title}</h4>
@@ -745,10 +922,9 @@
     (function () {
       const canvas = document.getElementById("network-canvas");
       const ctx = canvas.getContext("2d");
-      const hero = document.querySelector(".hero");
       let w, h, particles;
 
-      function resize() { w = canvas.width = hero.clientWidth; h = canvas.height = hero.clientHeight; }
+      function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
 
       function initParticles() {
         const count = Math.min(70, Math.floor((w * h) / 16000));
