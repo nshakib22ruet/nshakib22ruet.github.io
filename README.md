@@ -1,8 +1,10 @@
 # Md. Najmus Shakib — Portfolio Website
 
 This repo contains a single-page portfolio site (`index.html`). Everything — content, styling, and behavior — lives in that one file, so all edits below are made by opening `index.html` in any text editor (VS Code, Notepad++, GitHub's web editor, etc.), changing the relevant part, saving, and pushing to GitHub.
-
 No build tools, no npm install — just edit and push.
+
+#Portfolio Link
+https://nshakib22ruet.github.io/
 
 ---
 
