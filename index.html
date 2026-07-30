@@ -336,6 +336,13 @@
   @media (min-width: 640px) {
     .project-slide .slide-badge { display: inline-block; }
   }
+  .project-slide .slide-live {
+    display: inline-flex; align-items: center; gap: 0.35rem; flex-shrink: 0;
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em;
+    color: var(--accent); border: 1px solid var(--accent); border-radius: 999px;
+    padding: 0.28rem 0.7rem; text-decoration: none; transition: background 0.18s ease, color 0.18s ease;
+  }
+  .project-slide .slide-live:hover { background: var(--accent); color: #071120; }
   .project-slide .slide-arrow { color: var(--accent); flex-shrink: 0; transition: transform 0.18s ease; }
   .project-slide:hover .slide-arrow { transform: translateX(3px); }
 
@@ -683,9 +690,12 @@
         </button>
         <span class="project-badge" id="proj-badge"></span>
         <h2 id="proj-title" style="margin: 0.4rem 0 1.1rem;"></h2>
-        <p class="project-detail-desc" id="proj-desc"></p>
+        <div class="project-detail-desc" id="proj-desc"></div>
         <ul class="tag-list" id="proj-tags" style="justify-content: flex-start; margin: 1.3rem 0 1.7rem;"></ul>
-        <a id="proj-github" href="#" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View GitHub Repository</a>
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+          <a id="proj-live" href="#" target="_blank" class="btn btn-primary" style="display:none;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+          <a id="proj-github" href="#" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View GitHub Repository</a>
+        </div>
       </section>
     </div>
   </div>
@@ -759,7 +769,14 @@
         title: "ESP32 IoT Weather & Flood Monitoring System",
         description: "An intelligent environmental tracking system utilizing ESP32 with Bluetooth Low Energy (BLE), an SH1106 OLED interface, and an embedded quadratic regression model for real-time flood risk prediction.",
         tags: ["ESP32", "BLE", "Regression Model", "Embedded C"],
-        github: "https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System" }
+        github: "https://github.com/nshakib22ruet/Project-1-ESP32-Weather-Flood-Monitoring-System" },
+      { id: "P2", badge: "Machine Learning / Web App",
+        title: "Diabetes Risk Prediction using different ML model",
+        description: "Developed a Diabetes Risk Prediction System using machine learning to predict whether a person is diabetic based on medical attributes. The project includes data preprocessing, feature scaling, model training, evaluation, and a Flask-based web application for real-time prediction.",
+        models: ["Logistic Regression (LR)", "K-Nearest Neighbors (KNN)", "Decision Tree (DT)", "Random Forest (RF)", "Support Vector Machine (SVM)"],
+        tags: ["Machine Learning", "Flask", "Python", "Scikit-learn"],
+        live: "https://diabetes-risk-prediction-using-machine-qij4.onrender.com",
+        github: "https://github.com/nshakib22ruet/Diabetes-Risk-Prediction-using-ML" }
     ];
 
     const slidesWrap = document.getElementById("project-slides");
@@ -773,12 +790,17 @@
         <span class="slide-serial">P${String(i + 1).padStart(2, "0")}</span>
         <span class="slide-name">${p.title}</span>
         <span class="slide-badge">${p.badge}</span>
+        ${p.live ? `<a href="${p.live}" target="_blank" rel="noopener" class="slide-live" title="Live Demo" aria-label="Open live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>` : ""}
         <span class="slide-arrow"><i class="fa-solid fa-arrow-right"></i></span>
       `;
       slide.addEventListener("click", () => openProject(i));
       slide.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject(i); }
       });
+      const liveLink = slide.querySelector(".slide-live");
+      if (liveLink) {
+        liveLink.addEventListener("click", (e) => e.stopPropagation());
+      }
       slidesWrap.appendChild(slide);
     });
 
@@ -786,9 +808,18 @@
       const p = projectsData[index];
       document.getElementById("proj-badge").textContent = p.badge;
       document.getElementById("proj-title").textContent = p.title;
-      document.getElementById("proj-desc").textContent = p.description;
+      document.getElementById("proj-desc").innerHTML = `<p style="margin: 0 0 1rem;">${p.description}</p>` +
+        (p.models ? `<p style="margin: 0 0 0.5rem; font-weight: 600; color: var(--text);">Models Trained:</p>
+          <ul style="margin: 0; padding-left: 1.3rem; line-height: 1.75;">${p.models.map(m => `<li>${m}</li>`).join("")}</ul>` : "");
       document.getElementById("proj-tags").innerHTML = p.tags.map(t => `<li>${t}</li>`).join("");
       document.getElementById("proj-github").href = p.github;
+      const liveBtn = document.getElementById("proj-live");
+      if (p.live) {
+        liveBtn.href = p.live;
+        liveBtn.style.display = "inline-flex";
+      } else {
+        liveBtn.style.display = "none";
+      }
       switchPage("project");
     }
 
@@ -811,7 +842,9 @@
         items: ["ESP32", "Arduino", "Bluetooth Low Energy (BLE)", "Sensor Interfacing", "Embedded C"] },
       { id: "U3", icon: "fa-solid fa-chart-line", title: "Machine Learning & Data Analysis",
         blurb: "Applied modeling techniques used for prediction and analysis in sensor-driven projects.",
-        items: ["Machine Learning Fundamentals", "Quadratic Regression", "Data Analysis", "NumPy", "Pandas", "Matplotlib"] },
+        items: ["Machine Learning Fundamentals", "Quadratic Regression", "Data Analysis", "NumPy", "Pandas", "Matplotlib",
+          "Logistic Regression", "K-Nearest Neighbors (KNN)", "Naive Bayes", "Support Vector Machine (SVM)", "Decision Tree", "Random Forest",
+          "Train/Test Split", "K-Fold Cross Validation", "Stratified K-Fold", "Evaluation Metrics (Accuracy, Precision, Recall, F1-score)"] },
       { id: "U4", icon: "fa-solid fa-screwdriver-wrench", title: "Software & Development Tools",
         blurb: "Day-to-day toolchain for writing, simulating, and versioning firmware and analysis code.",
         items: ["Arduino IDE", "Visual Studio Code", "Git", "GitHub", "Proteus Design Suite", "MATLAB", "Wokwi Simulator"] },
