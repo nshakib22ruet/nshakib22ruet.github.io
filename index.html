@@ -777,12 +777,12 @@
         tags: ["Machine Learning", "Flask", "Python", "Scikit-learn"],
         live: "https://diabetes-risk-prediction-using-machine-qij4.onrender.com",
         github: "https://github.com/nshakib22ruet/Diabetes-Risk-Prediction-using-ML" },
-     { id: "P3", badge: "IoT / Embedded Systems",
+      { id: "P3", badge: "IoT / Battery Management & ML",
         title: "ESP32-Based Intelligent Multi-Port Battery Management System",
-        description: "An advanced, ESP32-powered multi-port battery management and charging supervision system featuring real-time voltage, current, and temperature monitoring, automated relay-based charging control, state-of-charge (SoC) estimation, and thermal protection.",
-        tags: ["ESP32", "BLE", "Embedded C", "Sensors"],
-        live: "https://nshakib22ruet.github.io/Project-3-Intelligent-Multi-Port-Battery-Management-System/",
-        github: "https://github.com/nshakib22ruet/Project-3-Intelligent-Multi-Port-Battery-Management-System" }
+        description: "An advanced, ESP32-powered multi-port battery management and charging supervision system featuring real-time voltage, current, and temperature monitoring, automated charging control, state-of-charge (SoC) estimation, and machine learning-based battery health assessment.",
+        tags: ["ESP32", "BLE", "Regression Model", "Embedded C"],
+        direct: true,
+        github: "https://nshakib22ruet.github.io/Project-3-Intelligent-Multi-Port-Battery-Management-System/" }
     ];
 
     const slidesWrap = document.getElementById("project-slides");
@@ -799,9 +799,13 @@
         ${p.live ? `<a href="${p.live}" target="_blank" rel="noopener" class="slide-live" title="Live Demo" aria-label="Open live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>` : ""}
         <span class="slide-arrow"><i class="fa-solid fa-arrow-right"></i></span>
       `;
-      slide.addEventListener("click", () => openProject(i));
+      const go = () => {
+        if (p.direct) window.open(p.github, "_blank", "noopener");
+        else openProject(i);
+      };
+      slide.addEventListener("click", go);
       slide.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject(i); }
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
       });
       const liveLink = slide.querySelector(".slide-live");
       if (liveLink) {
